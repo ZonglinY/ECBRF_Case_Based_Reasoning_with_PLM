@@ -1,0 +1,45 @@
+#!/bin/bash
+#SBATCH -J cbr_retr
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH --partition=RTXq
+#SBATCH -w node30
+#SBATCH --gres=gpu:1
+#SBATCH --output /export/home2/zonglin001/Out/addedST_conceptnet_bart_cbr_fullTrainSet_retr.out
+
+## with frozen retriever
+# num_steps has no use for now
+# sample_size for conceptnet should not be less than 5000
+# simi_batch_size for conceptnet should be as low as possible
+# --generator_model_type bart-base; gpt2-lmhead \
+python -u ./comet-atomic-index-builder-v6-twoEmbedder-DPR-faster-May-TST.py  \
+        --train_batch_size 32 --eval_batch_size 32 \
+        --simi_batch_size 2 --num_steps 600 \
+        --generator_model_type bart-base --retriever_model_type dpr \
+        --n_doc 1 --num_cases 3 \
+        --sample_size 200000 --if_only_embed_ckb_once \
+        --rerank_selection 1 \
+        --use_special_tokens_to_split_retrieved_cases --if_not_adding_special_relation_tokens \
+        --home_dir /export/home2/zonglin001/ \
+        --output_dir /export/home2/zonglin001/Checkpoints/addedST_conceptnet_bart_cbr_fullTrainSet/     \
+        --dataset_selection 0 --subset_selection -1 \
+        --if_use_nshot_data --num_sample 1 \
+        --if_reverse_order_demonstrations \
+        # --if_use_full_memory_store_while_subset --subset_selection_while_use_full_memory_store 3 \
+        # --random_retrieval \
+
+
+
+
+
+
+## still support:
+# --if_double_retrieval --filter_ratio 0.34 \
+# --larger_range_to_select_retrieval_randomly_from 12 \
+# --use_only_sub_rel_for_retrieval \
+# --possibility_add_cur_tuple_to_its_retrieved_cases 0.85 \
+# --if_use_relation_for_shakes \
+
+## may or may not support:
+# --use_obj_for_retrieval
+# --model_type bert \

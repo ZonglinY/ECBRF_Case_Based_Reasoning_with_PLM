@@ -1,0 +1,1200 @@
+AtLocation	7 continent	earth	1
+AtLocation	actor	movie	1
+AtLocation	airplane	sky	1
+AtLocation	animal	zoo	1
+AtLocation	apple	apple tree	1
+AtLocation	audience	theatre	1
+AtLocation	baggage	airport	1
+AtLocation	bed	bedroom	1
+AtLocation	bell	church	1
+AtLocation	bicycle	garage	1
+AtLocation	bicycle	street	1
+AtLocation	bill	mail box	1
+AtLocation	bird	air	1
+AtLocation	bird	forest	1
+AtLocation	bird	roof	1
+AtLocation	bird	sky	1
+AtLocation	black hole	space	1
+AtLocation	boat	water	1
+AtLocation	book	backpack	1
+AtLocation	book	bookshelf	1
+AtLocation	book	classroom	1
+AtLocation	book	library	1
+AtLocation	book	shelf	1
+AtLocation	book	your desk	1
+AtLocation	bookshelf	library	1
+AtLocation	bowl	cupboard	1
+AtLocation	brain	head	1
+AtLocation	bread	breadbox	1
+AtLocation	bride	wed	1
+AtLocation	build	city	1
+AtLocation	bunsen burner	chemistry lab	1
+AtLocation	cake	oven	1
+AtLocation	can food	pantry	1
+AtLocation	capital	country	1
+AtLocation	car	car show	1
+AtLocation	car	city	1
+AtLocation	car	freeway	1
+AtLocation	car	park lot	1
+AtLocation	card catalog	library	1
+AtLocation	carpet	house	1
+AtLocation	carpet pad	carpet	1
+AtLocation	cat	bed	1
+AtLocation	cat	lap	1
+AtLocation	cat	windowsill	1
+AtLocation	cavity	tooth	1
+AtLocation	cd	cd player	1
+AtLocation	chair	desk	1
+AtLocation	chair	office	1
+AtLocation	child	school	1
+AtLocation	chimney	roof	1
+AtLocation	city	county	1
+AtLocation	clarinet	orchestra	1
+AtLocation	closet	bedroom	1
+AtLocation	clothe	closet	1
+AtLocation	clothe	drawer	1
+AtLocation	clothe	store	1
+AtLocation	cloud	sky	1
+AtLocation	coat	closet	1
+AtLocation	coffee cup	desk	1
+AtLocation	college	city	1
+AtLocation	commercial	television	1
+AtLocation	computer	library	1
+AtLocation	computer	office	1
+AtLocation	computer	school	1
+AtLocation	computer	your house	1
+AtLocation	cookie	jar	1
+AtLocation	corner cupboard	kitchen	1
+AtLocation	crab	sand	1
+AtLocation	creek	forest	1
+AtLocation	criminal	jail	1
+AtLocation	dog	kennel	1
+AtLocation	door	build	1
+AtLocation	drawer	desk	1
+AtLocation	dresser	bedroom	1
+AtLocation	dust bunny	bed	1
+AtLocation	egg	supermarket	1
+AtLocation	eiffel tower	paris	1
+AtLocation	elephant	circus	1
+AtLocation	elephant	zoo	1
+AtLocation	feather	bird	1
+AtLocation	fish	aquarium	1
+AtLocation	fish	ocean	1
+AtLocation	fish	river	1
+AtLocation	fish	water	1
+AtLocation	floor	carpet	1
+AtLocation	floor	table	1
+AtLocation	flower	park	1
+AtLocation	food	fridge	1
+AtLocation	food	kitchen	1
+AtLocation	food	oven	1
+AtLocation	food	refrigerator	1
+AtLocation	food	supermarket	1
+AtLocation	food	table	1
+AtLocation	foot	desk	1
+AtLocation	foot	shoe	1
+AtLocation	fork	table	1
+AtLocation	frisbee	park	1
+AtLocation	furnace	basement	1
+AtLocation	galaxy	universe	1
+AtLocation	gideon bible	motel	1
+AtLocation	giraffe	zoo	1
+AtLocation	girl	school	1
+AtLocation	glass	cabinet	1
+AtLocation	glass	cupboard	1
+AtLocation	grass	lawn	1
+AtLocation	grass	park	1
+AtLocation	hamburger	fast-food restaurant	1
+AtLocation	hanger	closet	1
+AtLocation	horse	race track	1
+AtLocation	human	church	1
+AtLocation	human	country	1
+AtLocation	human	home	1
+AtLocation	human	love	1
+AtLocation	human	park	1
+AtLocation	human	school	1
+AtLocation	human	workplace	1
+AtLocation	information	internet	1
+AtLocation	jellyfish	aquarium	1
+AtLocation	jellyfish	most ocean	1
+AtLocation	jewish person	synagogue	1
+AtLocation	key	pocket	1
+AtLocation	key	purse	1
+AtLocation	knife	drawer	1
+AtLocation	knife	kitchen	1
+AtLocation	lawn mower	garage	1
+AtLocation	leaf	tree	1
+AtLocation	leave	tree	1
+AtLocation	letter	post office	1
+AtLocation	librarian	library	1
+AtLocation	lion	zoo	1
+AtLocation	literature	library	1
+AtLocation	lizard	bush	1
+AtLocation	lizard	dessert	1
+AtLocation	lock	door	1
+AtLocation	milk	fridge	1
+AtLocation	mirror	bedroom	1
+AtLocation	money	bank	1
+AtLocation	money	wallet	1
+AtLocation	moon	space	1
+AtLocation	motherboard	computer	1
+AtLocation	mouse	garage	1
+AtLocation	mouse	laboratory	1
+AtLocation	mouthwash	bathroom	1
+AtLocation	movie	theater	1
+AtLocation	neighbor	door	1
+AtLocation	neighbour	door	1
+AtLocation	nose	face	1
+AtLocation	notebook	desk	1
+AtLocation	nurse	hospital	1
+AtLocation	opera singer	opera	1
+AtLocation	pantry	kitchen	1
+AtLocation	paper clip	desk	1
+AtLocation	peanut butter	jar	1
+AtLocation	pen	office	1
+AtLocation	phone	your desk	1
+AtLocation	pickle	jar	1
+AtLocation	pillow	bedroom	1
+AtLocation	planet	space	1
+AtLocation	plate	cupboard	1
+AtLocation	plate	kitchen	1
+AtLocation	plate	table	1
+AtLocation	potato	kitchen	1
+AtLocation	potato	restaurant	1
+AtLocation	prisoner	jail	1
+AtLocation	program	television	1
+AtLocation	puck	hockey game	1
+AtLocation	rack	oven	1
+AtLocation	rock	mountain	1
+AtLocation	roof tile	roof	1
+AtLocation	rope	boat	1
+AtLocation	rosebush	backyard	1
+AtLocation	salt	ocean	1
+AtLocation	sand	desert	1
+AtLocation	school	city	1
+AtLocation	science	university	1
+AtLocation	seat	theater	1
+AtLocation	seat	theatre	1
+AtLocation	seven continent	earth	1
+AtLocation	seven day	week	1
+AtLocation	shark	any ocean	1
+AtLocation	shingle	roof	1
+AtLocation	shirt	closet	1
+AtLocation	shoe	closet	1
+AtLocation	shop basket	supermarket	1
+AtLocation	sink	kitchen	1
+AtLocation	slide	park	1
+AtLocation	snow	mountain	1
+AtLocation	sock	drawer	1
+AtLocation	sock	sock drawer	1
+AtLocation	someone	hospital	1
+AtLocation	someone	lake	1
+AtLocation	someone	museum	1
+AtLocation	someone	post office	1
+AtLocation	someone	shop	1
+AtLocation	someone	theater	1
+AtLocation	someone	zoo	1
+AtLocation	something	beach	1
+AtLocation	something	library	1
+AtLocation	something	mall	1
+AtLocation	something	refrigerator	1
+AtLocation	something	school	1
+AtLocation	something	sea	1
+AtLocation	something	something else	1
+AtLocation	something	store	1
+AtLocation	something	tree	1
+AtLocation	staple	stapler	1
+AtLocation	stapler	desk	1
+AtLocation	stapler	your desk	1
+AtLocation	star	night sky	1
+AtLocation	star	sky	1
+AtLocation	star	space	1
+AtLocation	state	country	1
+AtLocation	statue	museum	1
+AtLocation	stethoscope	doctor	1
+AtLocation	student	at school	1
+AtLocation	student	classroom	1
+AtLocation	student	school	1
+AtLocation	student	university	1
+AtLocation	submarine	water	1
+AtLocation	sun	center of solar system	1
+AtLocation	table	kitchen	1
+AtLocation	tablecloth	table	1
+AtLocation	teacher	classroom	1
+AtLocation	telephone	office	1
+AtLocation	telephone	your desk	1
+AtLocation	tenor	opera	1
+AtLocation	tiger	zoo	1
+AtLocation	tile	roof	1
+AtLocation	toilet	bathroom	1
+AtLocation	toilet paper	bathroom	1
+AtLocation	tongue	your mouth	1
+AtLocation	tool	garage	1
+AtLocation	towel rack	bathroom	1
+AtLocation	trash	dumpster	1
+AtLocation	traveller	airport	1
+AtLocation	tree	forest	1
+AtLocation	twenty four hour	day	1
+AtLocation	twenty-four hour	day	1
+AtLocation	wallet	pocket	1
+AtLocation	water	lake	1
+AtLocation	water	pool	1
+AtLocation	water	river	1
+AtLocation	water	waterfall	1
+AtLocation	weasel	zoo	1
+AtLocation	whale	ocean	1
+AtLocation	window	house	1
+AtLocation	wine list	restaurant	1
+AtLocation	word	book	1
+AtLocation	your neighbor	door	1
+AtLocation	your tooth	your mouth	1
+CapableOf	alcohol	cloud judgement	1
+CapableOf	alcohol	cloud your judgement	1
+CapableOf	artist	paint portrait	1
+CapableOf	atheist	doubt existence of god	1
+CapableOf	author	write book	1
+CapableOf	baby	cry	1
+CapableOf	baby	cry loud	1
+CapableOf	babysitter	mind baby	1
+CapableOf	ball	bounce	1
+CapableOf	ball	roll down hill	1
+CapableOf	banker	lend money	1
+CapableOf	bird	sing	1
+CapableOf	blacksmith	shoe horse	1
+CapableOf	bomb	destroy build	1
+CapableOf	bomb	destroy city	1
+CapableOf	bomb	explode	1
+CapableOf	boy	date girl	1
+CapableOf	boy	kiss girl	1
+CapableOf	brake	slow car	1
+CapableOf	camper	sleep in tent	1
+CapableOf	car	crash	1
+CapableOf	car	go fast	1
+CapableOf	car	slow down	1
+CapableOf	carpenter	build house	1
+CapableOf	cat	catch mouse	1
+CapableOf	cat	corner mouse	1
+CapableOf	cat	drink water	1
+CapableOf	cat	eat mouse	1
+CapableOf	cat	hunt mouse	1
+CapableOf	chicken	cross road	1
+CapableOf	chicken	lie egg	1
+CapableOf	chicken	produce egg	1
+CapableOf	child	play	1
+CapableOf	child	share toy	1
+CapableOf	clerk	stock shelve	1
+CapableOf	clock	tell time	1
+CapableOf	comb	part hair	1
+CapableOf	computer	compute	1
+CapableOf	computer	process information	1
+CapableOf	cook	prepare meal	1
+CapableOf	cup	hold liquid	1
+CapableOf	dealer	deal card	1
+CapableOf	detective	piece together clue	1
+CapableOf	detective	tail suspect	1
+CapableOf	doctor	help sick person	1
+CapableOf	dog	bark	1
+CapableOf	dog	be pet	1
+CapableOf	dog	guard house	1
+CapableOf	dog	guard your house	1
+CapableOf	dog	guide blind person	1
+CapableOf	dog	run	1
+CapableOf	farmer	farm land	1
+CapableOf	finger	push button	1
+CapableOf	fire	burn thing	1
+CapableOf	gardener	water plant	1
+CapableOf	girl	wear dress	1
+CapableOf	grocer	stock shelve	1
+CapableOf	gun	kill person	1
+CapableOf	horse	carry person	1
+CapableOf	horse	jump fence	1
+CapableOf	host	welcome guest	1
+CapableOf	human	die	1
+CapableOf	human	die only once	1
+CapableOf	human	eat	1
+CapableOf	hummingbird	hover	1
+CapableOf	key	open door	1
+CapableOf	key	open lock	1
+CapableOf	knife	spread butter	1
+CapableOf	knife	spread peanut butter	1
+CapableOf	lawyer	object in court	1
+CapableOf	lawyer	settle lawsuit	1
+CapableOf	magician	fool audience	1
+CapableOf	man	date woman	1
+CapableOf	man	father child	1
+CapableOf	match	light candle	1
+CapableOf	match	light fire	1
+CapableOf	mechanic	service car	1
+CapableOf	miner	mine coal	1
+CapableOf	mother	care for her child	1
+CapableOf	nurse	care for patient	1
+CapableOf	paint	coat wall	1
+CapableOf	parent	name child	1
+CapableOf	passenger	board airplane	1
+CapableOf	passenger	board plane	1
+CapableOf	passenger	board train	1
+CapableOf	person	believe in god	1
+CapableOf	person	board plane	1
+CapableOf	person	captain ship	1
+CapableOf	person	catch cold	1
+CapableOf	person	cross street	1
+CapableOf	person	eat	1
+CapableOf	person	laugh at joke	1
+CapableOf	person	love	1
+CapableOf	person	pay bill	1
+CapableOf	person	sail boat	1
+CapableOf	person	shoulder burden	1
+CapableOf	person	sleep	1
+CapableOf	person	talk to each other	1
+CapableOf	person	taste food	1
+CapableOf	person	thank another person	1
+CapableOf	person	thank god	1
+CapableOf	person	think	1
+CapableOf	person	voice opinion	1
+CapableOf	person	water plant	1
+CapableOf	person	wind clock	1
+CapableOf	pianist	play piano	1
+CapableOf	pilot	fly airplane	1
+CapableOf	pilot	fly helicopter	1
+CapableOf	pilot	fly plane	1
+CapableOf	pilot	land airplane	1
+CapableOf	pilot	land plane	1
+CapableOf	plane	arrive at airport	1
+CapableOf	plane	crash	1
+CapableOf	plane	fly	1
+CapableOf	police officer	direct traffic	1
+CapableOf	policeman	direct traffic	1
+CapableOf	president	govern country	1
+CapableOf	radio	play music	1
+CapableOf	ruler	measure distance	1
+CapableOf	sailor	sail ship	1
+CapableOf	screwdriver	turn screw	1
+CapableOf	shovel	dig hole	1
+CapableOf	stopwatch	time race	1
+CapableOf	student	fail test	1
+CapableOf	student	master subject	1
+CapableOf	student	study	1
+CapableOf	submarine	travel under water	1
+CapableOf	teacher	help student	1
+CapableOf	teacher	school student	1
+CapableOf	teacher	teach student	1
+CapableOf	terrorist	arm bomb	1
+CapableOf	thief	case house	1
+CapableOf	thief	case joint	1
+CapableOf	tongue	taste food	1
+CapableOf	train	arrive late	1
+CapableOf	tree	grow	1
+CapableOf	turtle	live long time	1
+CapableOf	usher	seat guest	1
+CapableOf	vintner	bottle wine	1
+CapableOf	visitor	ring doorbell	1
+CapableOf	water	reflect image	1
+CapableOf	woman	chair committee	1
+CapableOf	woman	mother child	1
+CapableOf	woman	wear dress	1
+Causes	apply for job	get job	1
+Causes	bathe	be clean	1
+Causes	chat with friend	laughter	1
+Causes	chew your food	good digestion	1
+Causes	cross street	get to other side	1
+Causes	do housework	clean house	1
+Causes	do housework	have clean house	1
+Causes	exercise	sweat	1
+Causes	fall	injury	1
+Causes	fart	bad smell	1
+Causes	go on vacation	relaxation	1
+Causes	go to bed	sleep	1
+Causes	go to get haircut	your hair will be short	1
+Causes	go to laundromat	clean clothe	1
+Causes	go to play	be entertain	1
+Causes	go to zoo	see animal	1
+Causes	have haircut	have short hair	1
+Causes	have sex	baby	1
+Causes	kill	death	1
+Causes	light match	fire	1
+Causes	maintain good health	long life	1
+Causes	move car	accident	1
+Causes	open gift	surprise	1
+Causes	play	fun	1
+Causes	play game with your friend	fun	1
+Causes	play violin	music	1
+Causes	procreate	have child	1
+Causes	propose to woman	marriage	1
+Causes	read	learn	1
+Causes	read	learn something	1
+Causes	relax	sleep	1
+Causes	reproduce	child	1
+Causes	see your favorite show	laugh	1
+Causes	sex	child	1
+Causes	sex	orgasm	1
+Causes	sing	sore throat	1
+Causes	smoke	cancer	1
+Causes	smoke	lung cancer	1
+Causes	smoke cigarette	lung cancer	1
+Causes	stay healthy	long life	1
+Causes	strike match	fire	1
+Causes	tickle	laugh	1
+Causes	tickle	laughter	1
+Causes	wait in line	boredom	1
+Causes	walk in rain	you get wet	1
+CausesDesire	be tire	have rest	1
+CausesDesire	cold	light fire	1
+CausesDesire	full bladder	urinate	1
+CausesDesire	love	kiss someone	1
+CausesDesire	love	propose to woman	1
+CreatedBy	book	writer	1
+CreatedBy	music	composer	1
+DefinedAs	kitten	baby cat	1
+Desires	child	play with toy	1
+Desires	dog	chew on bone	1
+Desires	man	woman	1
+Desires	monkey	eat banana	1
+Desires	person	clothe	1
+Desires	person	dance	1
+Desires	person	feel important	1
+Desires	person	laugh	1
+HasA	bicycle	two wheel	1
+HasA	bird	feather	1
+HasA	book	knowledge	1
+HasA	book	story	1
+HasA	bottle	liquid	1
+HasA	car	four wheel	1
+HasA	car	headlight	1
+HasA	car	seat	1
+HasA	cat	claw	1
+HasA	cat	four leg	1
+HasA	cat	fur	1
+HasA	cat	whisker	1
+HasA	chess board	64 square	1
+HasA	dice	six side	1
+HasA	dog	four leg	1
+HasA	dog	fur	1
+HasA	duck	bill	1
+HasA	duck	web foot	1
+HasA	earth	one moon	1
+HasA	fruit	seed	1
+HasA	guitar	6 string	1
+HasA	guitar	six string	1
+HasA	horse	four leg	1
+HasA	house	door	1
+HasA	house	room	1
+HasA	house	window	1
+HasA	human	five finger on each hand	1
+HasA	library	book	1
+HasA	man	penis	1
+HasA	most pizza	cheese on it	1
+HasA	ocean	salt water	1
+HasA	pen	ink	1
+HasA	plant	green leave	1
+HasA	plant	leave	1
+HasA	rose	thorn	1
+HasA	swiss cheese	hole	1
+HasA	tree	leave	1
+HasA	triangle	three side	1
+HasA	two person	sex	1
+HasA	wine	alcohol	1
+HasA	woman	baby	1
+HasFirstSubevent	wake up	open your eye	1
+HasPrerequisite	answer question	think	1
+HasPrerequisite	attend classical concert	buy ticket	1
+HasPrerequisite	bathe	take your clothe off	1
+HasPrerequisite	become inebriate	drink alcohol	1
+HasPrerequisite	bury cat	dig hole	1
+HasPrerequisite	buy food	go to store	1
+HasPrerequisite	buy present for others	have money	1
+HasPrerequisite	buy something	have money	1
+HasPrerequisite	chop firewood	axe	1
+HasPrerequisite	commit perjury	lie	1
+HasPrerequisite	compete against someone	enter competition	1
+HasPrerequisite	contemplate	think	1
+HasPrerequisite	create idea	think	1
+HasPrerequisite	cross street	look both way	1
+HasPrerequisite	cut your hair	go to barber	1
+HasPrerequisite	diminish your own hunger	eat	1
+HasPrerequisite	dream	fall asleep	1
+HasPrerequisite	dream	sleep	1
+HasPrerequisite	drink	open your mouth	1
+HasPrerequisite	drive	get in car	1
+HasPrerequisite	earn live	work	1
+HasPrerequisite	eat breakfast	wake up	1
+HasPrerequisite	empty your bladder	go to bathroom	1
+HasPrerequisite	empty your bladder	go to toilet	1
+HasPrerequisite	exercise	energy	1
+HasPrerequisite	find lose item	look for it	1
+HasPrerequisite	find lose item	search	1
+HasPrerequisite	fly in airplane	buy ticket	1
+HasPrerequisite	gather energy for tomorrow	sleep	1
+HasPrerequisite	get drunk	drink alcohol	1
+HasPrerequisite	get pay	work	1
+HasPrerequisite	get some money from someone	ask	1
+HasPrerequisite	get something	ask for it	1
+HasPrerequisite	get up early	go to bed early	1
+HasPrerequisite	get up early	set alarm clock	1
+HasPrerequisite	get up early	set your alarm clock	1
+HasPrerequisite	go for drive	get car	1
+HasPrerequisite	go for drive	get into car	1
+HasPrerequisite	go for haircut	find barber	1
+HasPrerequisite	go for haircut	go to barber	1
+HasPrerequisite	go see play	buy ticket	1
+HasPrerequisite	go to bed	turn off light	1
+HasPrerequisite	go to bed	turn out light	1
+HasPrerequisite	go to movie	buy ticket	1
+HasPrerequisite	go to opera	buy ticket	1
+HasPrerequisite	go to performance	buy ticket	1
+HasPrerequisite	go to sport event	buy ticket	1
+HasPrerequisite	have asthma attack	have asthma	1
+HasPrerequisite	have bath	fill tub with water	1
+HasPrerequisite	have checkup	go to doctor	1
+HasPrerequisite	have checkup	make doctor appointment	1
+HasPrerequisite	have examination	see doctor	1
+HasPrerequisite	have haircut	go to barber	1
+HasPrerequisite	have physical exam	go to doctor	1
+HasPrerequisite	hear news	turn on tv	1
+HasPrerequisite	jump out of window	open window	1
+HasPrerequisite	learn	study	1
+HasPrerequisite	listen to music	turn on radio	1
+HasPrerequisite	maintain muscle strength	exercise	1
+HasPrerequisite	make friend	smile	1
+HasPrerequisite	make person laugh	tell joke	1
+HasPrerequisite	paint house	ladder	1
+HasPrerequisite	pass class	study	1
+HasPrerequisite	pass course	study	1
+HasPrerequisite	pass your university exam	study	1
+HasPrerequisite	pay bill	have money	1
+HasPrerequisite	play game	learn rule	1
+HasPrerequisite	play piano	take lesson	1
+HasPrerequisite	pray	believe in god	1
+HasPrerequisite	pretend	imagine	1
+HasPrerequisite	pretend	use your imagination	1
+HasPrerequisite	program	learn program language	1
+HasPrerequisite	reach tentative agreement	compromise	1
+HasPrerequisite	read magazine	buy magazine	1
+HasPrerequisite	read news	buy newspaper	1
+HasPrerequisite	read newspaper	get newspaper	1
+HasPrerequisite	remember phone number	repeat it to yourself	1
+HasPrerequisite	reproduce	find mate	1
+HasPrerequisite	reproduce	have sex	1
+HasPrerequisite	rest	lie down	1
+HasPrerequisite	sate your hunger	eat	1
+HasPrerequisite	see art	go to museum	1
+HasPrerequisite	see band	buy ticket	1
+HasPrerequisite	see exhibit	go to museum	1
+HasPrerequisite	see old thing	go to museum	1
+HasPrerequisite	sew	thread needle	1
+HasPrerequisite	shop	have money	1
+HasPrerequisite	sit down	bend your knee	1
+HasPrerequisite	ski	snow	1
+HasPrerequisite	sleep	close eye	1
+HasPrerequisite	sleep	close your eye	1
+HasPrerequisite	sleep	get in bed	1
+HasPrerequisite	snore	sleep	1
+HasPrerequisite	stop your car	apply brake	1
+HasPrerequisite	stop your car	press brake	1
+HasPrerequisite	study	concentration	1
+HasPrerequisite	surprise someone	hide	1
+HasPrerequisite	swim	get into water	1
+HasPrerequisite	take bus	go to bus stop	1
+HasPrerequisite	take phone call	pick up phone	1
+HasPrerequisite	think	brain	1
+HasPrerequisite	visit other country	get passport	1
+HasPrerequisite	visit other country	travel	1
+HasPrerequisite	watch even news	turn on television	1
+HasPrerequisite	watch even news	turn on tv	1
+HasPrerequisite	watch movie	buy ticket	1
+HasPrerequisite	watch television	turn television on	1
+HasPrerequisite	watch television show	turn on tv	1
+HasPrerequisite	write term paper	research	1
+HasProperty	apple	good for you	1
+HasProperty	apple	good to eat	1
+HasProperty	apple	green	1
+HasProperty	apple	red	1
+HasProperty	baby animal	cute	1
+HasProperty	ball	round	1
+HasProperty	banana	yellow	1
+HasProperty	basketball	round	1
+HasProperty	basketball player	tall	1
+HasProperty	build	big	1
+HasProperty	cake	sweet	1
+HasProperty	canada	north of unite state	1
+HasProperty	chair	comfortable	1
+HasProperty	circle	round	1
+HasProperty	coffee	serve hot	1
+HasProperty	cookie	sweet	1
+HasProperty	day	bright	1
+HasProperty	doctor	smart	1
+HasProperty	dog	very loyal	1
+HasProperty	earth	spherical	1
+HasProperty	exercise	good for you	1
+HasProperty	fire engine	red	1
+HasProperty	frisbee	round	1
+HasProperty	fruit	edible	1
+HasProperty	fruit	good for you	1
+HasProperty	fruit	healthy	1
+HasProperty	fruit	sweet	1
+HasProperty	gamble	addictive	1
+HasProperty	glass	half full	1
+HasProperty	glue	sticky	1
+HasProperty	grain of sand	very small	1
+HasProperty	horse	brown	1
+HasProperty	kill	wrong	1
+HasProperty	lemon	sour	1
+HasProperty	lizard	cold blood	1
+HasProperty	men and woman	different	1
+HasProperty	most person	right hand	1
+HasProperty	most person	right-handed	1
+HasProperty	music	relax	1
+HasProperty	music	soothe	1
+HasProperty	needle	sharp	1
+HasProperty	night	dark	1
+HasProperty	oil	slippery	1
+HasProperty	paper	crumple	1
+HasProperty	paper	recyclable	1
+HasProperty	paper	white	1
+HasProperty	party	fun	1
+HasProperty	planet earth	round	1
+HasProperty	plant	green	1
+HasProperty	puppy	cute	1
+HasProperty	rock	heavy	1
+HasProperty	rubber duck	yellow	1
+HasProperty	sail	fun	1
+HasProperty	school bus	yellow	1
+HasProperty	sex	enjoyable	1
+HasProperty	sex	fun	1
+HasProperty	sex	good	1
+HasProperty	sex	pleasurable	1
+HasProperty	sky	blue	1
+HasProperty	some car	expensive	1
+HasProperty	something that be very good	good	1
+HasProperty	sport	fun	1
+HasProperty	sunset	pretty	1
+HasProperty	sword	sharp	1
+HasProperty	tack	sharp	1
+HasProperty	water	essential to all life	1
+HasProperty	water	liquid	1
+HasProperty	wheel	round	1
+HasProperty	winter	cold	1
+HasProperty	world	round	1
+HasSubevent	agree with someone	nod	1
+HasSubevent	attend lecture	take note	1
+HasSubevent	attend school	learn	1
+HasSubevent	awake	yawn	1
+HasSubevent	bathe	use soap	1
+HasSubevent	breathe	inhale	1
+HasSubevent	bury cat	dig hole	1
+HasSubevent	chat with friend	laugh	1
+HasSubevent	climb	fall	1
+HasSubevent	commit perjury	lie	1
+HasSubevent	commit suicide	die	1
+HasSubevent	commit to memory	repeat	1
+HasSubevent	compete	win	1
+HasSubevent	compete	you lose	1
+HasSubevent	die	stop breathe	1
+HasSubevent	diminish your own hunger	eat	1
+HasSubevent	dream	sleep	1
+HasSubevent	drink alcohol	get drunk	1
+HasSubevent	drive	listen to radio	1
+HasSubevent	eat	chew	1
+HasSubevent	eat breakfast in bed	watch tv	1
+HasSubevent	enjoy film	eat popcorn	1
+HasSubevent	enjoy film	laugh	1
+HasSubevent	express how funny something	be laugh	1
+HasSubevent	gather energy for tomorrow	sleep	1
+HasSubevent	get job	interview	1
+HasSubevent	go for swim	drown	1
+HasSubevent	go for swim	get wet	1
+HasSubevent	go to hairdresser	get haircut	1
+HasSubevent	go to school	learn	1
+HasSubevent	have bath	get wet	1
+HasSubevent	have epileptic fit	fall down	1
+HasSubevent	have fun	smile	1
+HasSubevent	have nervous breakdown	cry	1
+HasSubevent	have rest	close your eye	1
+HasSubevent	have sex	have orgasm	1
+HasSubevent	have sex	sweat	1
+HasSubevent	jump out of window	die	1
+HasSubevent	lie	you feel guilty	1
+HasSubevent	light fire	strike match	1
+HasSubevent	listen to music	dance	1
+HasSubevent	listen to radio	hear music	1
+HasSubevent	live	breathe	1
+HasSubevent	make patchwork quilt	sew	1
+HasSubevent	meet interest person	talk to them	1
+HasSubevent	meet person	shake their hand	1
+HasSubevent	paint picture	look at model	1
+HasSubevent	play	have fun	1
+HasSubevent	play ball	catch ball	1
+HasSubevent	play basketball	dribble	1
+HasSubevent	play basketball	score point	1
+HasSubevent	play frisbee	catch frisbee	1
+HasSubevent	play game	fun	1
+HasSubevent	play game	have fun	1
+HasSubevent	play game	win	1
+HasSubevent	play guitar	sing	1
+HasSubevent	play poker	bluff	1
+HasSubevent	play sport	have fun	1
+HasSubevent	play sport	run	1
+HasSubevent	play tennis	hit ball	1
+HasSubevent	pray	kneel down	1
+HasSubevent	read	learn	1
+HasSubevent	read	turn page	1
+HasSubevent	read magazine	turn page	1
+HasSubevent	relax	sleep	1
+HasSubevent	reproduce	have sex	1
+HasSubevent	rest	sleep	1
+HasSubevent	ride horse	fall off	1
+HasSubevent	run	sweat	1
+HasSubevent	skate	fall down	1
+HasSubevent	sleep	dream	1
+HasSubevent	sleep	snore	1
+HasSubevent	start family	have sex	1
+HasSubevent	stop your bicycle	apply brake	1
+HasSubevent	study	read	1
+HasSubevent	study	read book	1
+HasSubevent	take shower	wash your hair	1
+HasSubevent	tickle	laugh	1
+HasSubevent	use computer	type on keyboard	1
+HasSubevent	walk in rain	get wet	1
+HasSubevent	wash your car	get wet	1
+HasSubevent	watch tv	fall asleep	1
+HasSubevent	write	think	1
+IsA	air	gas	1
+IsA	anger	emotion	1
+IsA	ant	insect	1
+IsA	apple	fruit	1
+IsA	backgammon	game	1
+IsA	badminton	sport	1
+IsA	ball	toy	1
+IsA	banana	fruit	1
+IsA	banjo	string instrument	1
+IsA	baseball	american pastime	1
+IsA	baseball	game	1
+IsA	baseball	sport	1
+IsA	bass	fish	1
+IsA	bean	vegetable	1
+IsA	beanie	hat	1
+IsA	beaver	mammal	1
+IsA	beer	alcoholic beverage	1
+IsA	bicycle	form of transportation	1
+IsA	bicycle	two wheel vehicle	1
+IsA	biology	science	1
+IsA	blue	color	1
+IsA	boat	on water	1
+IsA	bottle	container	1
+IsA	box	container	1
+IsA	boy	young man	1
+IsA	brain	head	1
+IsA	brazil	country	1
+IsA	butter	food	1
+IsA	butterfly	insect	1
+IsA	c	program language	1
+IsA	california	state	1
+IsA	canada	country	1
+IsA	car	vehicle	1
+IsA	cat	animal	1
+IsA	cat	carnivore	1
+IsA	cat	curious animal	1
+IsA	cheese	food	1
+IsA	chess	game	1
+IsA	chicken	food	1
+IsA	chicken	meat	1
+IsA	china	country	1
+IsA	chocolate	candy	1
+IsA	chocolate	food	1
+IsA	christianity	religion	1
+IsA	city	place	1
+IsA	clarinet	instrument	1
+IsA	classroom	in school	1
+IsA	coke	soda	1
+IsA	college	place	1
+IsA	colorado	state	1
+IsA	computer	electronic device	1
+IsA	corn	food	1
+IsA	corn	vegetable	1
+IsA	crappie	fish	1
+IsA	crow	bird	1
+IsA	cucumber	vegetable	1
+IsA	denim	fabric	1
+IsA	dentist	doctor	1
+IsA	dinner	meal	1
+IsA	dog	animal	1
+IsA	dog	canine	1
+IsA	dog	loyal friend	1
+IsA	dog	mammal	1
+IsA	dog	man best friend	1
+IsA	dog	pet	1
+IsA	doll	toy	1
+IsA	dolphin	mammal	1
+IsA	drum	percussion instrument	1
+IsA	egg	food	1
+IsA	eiffel tower	in paris	1
+IsA	elementary school	school	1
+IsA	english	language	1
+IsA	fall	season	1
+IsA	fedora	hat	1
+IsA	finch	bird	1
+IsA	fish	animal	1
+IsA	fly	insect	1
+IsA	football	game	1
+IsA	football	sport	1
+IsA	france	country	1
+IsA	french	language	1
+IsA	frog	amphibian	1
+IsA	girl	hold puppy	1
+IsA	gold	metal	1
+IsA	golden retriever	dog	1
+IsA	goldfish	carp	1
+IsA	golf	sport	1
+IsA	goose	bird	1
+IsA	gravity	force	1
+IsA	green	color	1
+IsA	guitar	string instrument	1
+IsA	guitare	instrument	1
+IsA	gun	weapon	1
+IsA	hawk	bird	1
+IsA	high rise	build	1
+IsA	highway	road	1
+IsA	hockey	sport	1
+IsA	horn	musical instrument	1
+IsA	human	animal	1
+IsA	human	mammal	1
+IsA	iron	metal	1
+IsA	islam	religion	1
+IsA	jack	child game	1
+IsA	jack	game	1
+IsA	java	program language	1
+IsA	jupiter	planet	1
+IsA	kiss	sign of affection	1
+IsA	lake	body of water	1
+IsA	lettuce	vegetable	1
+IsA	linux	operate system	1
+IsA	lion	animal	1
+IsA	lion	carnivore	1
+IsA	london	city	1
+IsA	love	emotion	1
+IsA	love	feel	1
+IsA	mar	planet	1
+IsA	marijuana	drug	1
+IsA	mastercard	credit card	1
+IsA	metal	music	1
+IsA	mouse	mammal	1
+IsA	murder	crime	1
+IsA	mushroom	fungus	1
+IsA	music	form of art	1
+IsA	music	sound	1
+IsA	necklace	jewelry	1
+IsA	new york	state	1
+IsA	novel	book	1
+IsA	orchid	flower	1
+IsA	ostrich	bird	1
+IsA	oxygen	gas	1
+IsA	parakeet	bird	1
+IsA	paris	city	1
+IsA	pea	vegetable	1
+IsA	peach	fruit	1
+IsA	pelican	bird	1
+IsA	perl	program language	1
+IsA	pheasant	bird	1
+IsA	physic	science	1
+IsA	piano	instrument	1
+IsA	pineapple	fruit	1
+IsA	ping pong	game	1
+IsA	pistol	gun	1
+IsA	plastic	material	1
+IsA	pocket knife	useful tool	1
+IsA	poker	card game	1
+IsA	polo	game	1
+IsA	pony	horse	1
+IsA	poodle	dog	1
+IsA	potato	vegetable	1
+IsA	rabbit	mammal	1
+IsA	rain	water	1
+IsA	raisin	dry grape	1
+IsA	red	color	1
+IsA	restaurant	place	1
+IsA	rice	food	1
+IsA	rifle	gun	1
+IsA	robin	bird	1
+IsA	robot	machine	1
+IsA	rock	music	1
+IsA	rose	flower	1
+IsA	salad	food	1
+IsA	salamander	amphibian	1
+IsA	san francisco	city	1
+IsA	saturn	planet	1
+IsA	saxophone	instrument	1
+IsA	saxophone	musical instrument	1
+IsA	see	tool	1
+IsA	sex	activity	1
+IsA	shirt	clothe	1
+IsA	shotgun	gun	1
+IsA	silver	metal	1
+IsA	skyscraper	build	1
+IsA	slave	person	1
+IsA	soccer	sport	1
+IsA	soda	drink	1
+IsA	sofa	sit on	1
+IsA	soup	food	1
+IsA	spanish	language	1
+IsA	spider	arachnid	1
+IsA	star trek	popular television show	1
+IsA	statue of liberty	gift from france	1
+IsA	statue of liberty	in new york	1
+IsA	steel	metal	1
+IsA	stone	another word for rock	1
+IsA	submarine	ship	1
+IsA	sushi	food	1
+IsA	sushi	japanese food	1
+IsA	sushi	raw fish	1
+IsA	swim	sport	1
+IsA	table tennis	sport	1
+IsA	telephone	communication device	1
+IsA	tennis	sport	1
+IsA	there	food at grocery store	1
+IsA	tomato	vegetable	1
+IsA	tree	plant	1
+IsA	trout	fish	1
+IsA	tuba	musical instrument	1
+IsA	turtle	reptile	1
+IsA	tv	abbreviation for television	1
+IsA	unix	operate system	1
+IsA	unix	system	1
+IsA	vegetable	food	1
+IsA	venus	planet	1
+IsA	viola	instrument	1
+IsA	violin	string instrument	1
+IsA	whale	mammal	1
+IsA	wine	beverage	1
+IsA	woodwind	instrument	1
+IsA	xylophone	percussion instrument	1
+IsA	yo-yo	toy	1
+IsA	yoyo	toy	1
+MadeOf	book	paper	1
+MadeOf	bottle	glass	1
+MadeOf	bottle	plastic	1
+MadeOf	bread	flour	1
+MadeOf	car	metal	1
+MadeOf	cheese	milk	1
+MadeOf	coffee	coffee bean	1
+MadeOf	cowboy boot	leather	1
+MadeOf	eraser	rubber	1
+MadeOf	jean	denim	1
+MadeOf	paper	wood	1
+MadeOf	pencil	wood	1
+MadeOf	snowman	snow	1
+MadeOf	window	glass	1
+MotivatedByGoal	compete	win	1
+MotivatedByGoal	have rest	you be very tire	1
+MotivatedByGoal	play	have some fun	1
+MotivatedByGoal	propose to woman	you love her	1
+MotivatedByGoal	read	learn	1
+MotivatedByGoal	read newspaper	be inform	1
+MotivatedByGoal	sleep	rest	1
+MotivatedByGoal	urinate	your bladder be full	1
+NotCapableOf	atheist	believe in god	1
+NotCapableOf	deaf person	hear	1
+NotCapableOf	dog	fly	1
+NotCapableOf	dog	sweat	1
+NotCapableOf	dog	talk	1
+NotCapableOf	fish	live out of water	1
+NotCapableOf	penguin	fly	1
+NotCapableOf	person	fly	1
+NotCapableOf	pig	fly	1
+NotCapableOf	vegetarian	eat meat	1
+NotCapableOf	water and oil	mix	1
+NotHasProperty	work	fun	1
+NotIsA	earth	perfect sphere	1
+PartOf	arm	body	1
+PartOf	book	library	1
+PartOf	cornea	eye	1
+PartOf	cpu	computer	1
+PartOf	death	life	1
+PartOf	door	house	1
+PartOf	finger	hand	1
+PartOf	galaxy	universe	1
+PartOf	god	religion	1
+PartOf	keyboard	computer	1
+PartOf	leaf	tree	1
+PartOf	monitor	computer	1
+PartOf	nose	face	1
+PartOf	page	book	1
+PartOf	palm	hand	1
+PartOf	person	society	1
+PartOf	son	family	1
+PartOf	tire	car	1
+PartOf	toe	foot	1
+PartOf	trigger	gun	1
+PartOf	usenet newsgroup	usenet	1
+PartOf	wheel	car	1
+ReceivesAction	apple	eat	1
+ReceivesAction	book	read	1
+ReceivesAction	book	write	1
+ReceivesAction	car	drive	1
+ReceivesAction	food	eat	1
+ReceivesAction	hat	wear on head	1
+ReceivesAction	horse	ride	1
+ReceivesAction	sailboat	propel by wind	1
+ReceivesAction	shoe	wear on foot	1
+ReceivesAction	some plastic	recycle	1
+ReceivesAction	tank	use in war	1
+RelatedTo	home	family	1
+UsedFor	airplane	travel	1
+UsedFor	bagpipe	play music	1
+UsedFor	ball	throw	1
+UsedFor	bank	store money	1
+UsedFor	bar stool	sit on	1
+UsedFor	baseball	play baseball	1
+UsedFor	baseball field	play baseball	1
+UsedFor	bathtub	bathe	1
+UsedFor	bed	have sex	1
+UsedFor	bed	sleep	1
+UsedFor	bicycle	transportation	1
+UsedFor	bicycle storage area	store bicycle	1
+UsedFor	blanket	sleep	1
+UsedFor	boat	travel on water	1
+UsedFor	bomb	blow thing up	1
+UsedFor	bomb	kill person	1
+UsedFor	book	learn	1
+UsedFor	book	read	1
+UsedFor	book	study	1
+UsedFor	bookstore	buy book	1
+UsedFor	bottle	store liquid	1
+UsedFor	bread	eat	1
+UsedFor	bridge	cross river	1
+UsedFor	broom	sweep	1
+UsedFor	brownstone	live in	1
+UsedFor	bus stop	wait for bus	1
+UsedFor	camera	take picture	1
+UsedFor	canvas	paint on	1
+UsedFor	carpet	cover floor	1
+UsedFor	cereal bowl	eat cereal	1
+UsedFor	chair	sit	1
+UsedFor	chalk	write on blackboard	1
+UsedFor	chess board	play chess	1
+UsedFor	chest of drawer	store clothe	1
+UsedFor	chopstick	eat	1
+UsedFor	classroom	teach	1
+UsedFor	cloth	clean	1
+UsedFor	cloth	make clothe	1
+UsedFor	comb	style hair	1
+UsedFor	computer	communication	1
+UsedFor	computer	play game	1
+UsedFor	computer	work	1
+UsedFor	condominium	live in	1
+UsedFor	contraceptive	prevent pregnancy	1
+UsedFor	cup	drink	1
+UsedFor	cup	drink from	1
+UsedFor	diner	eat	1
+UsedFor	disco	dance	1
+UsedFor	dog	companionship	1
+UsedFor	double edge razor	shave	1
+UsedFor	dresser	store clothe	1
+UsedFor	ear	hear	1
+UsedFor	eye	see	1
+UsedFor	fan	circulate air	1
+UsedFor	fan	move air	1
+UsedFor	feather	tickle someone	1
+UsedFor	flask	hold liquid	1
+UsedFor	floor	walk	1
+UsedFor	floor	walk on	1
+UsedFor	food	eat	1
+UsedFor	fork	eat	1
+UsedFor	fork	eat food	1
+UsedFor	fruit	eat	1
+UsedFor	fry pan	cook	1
+UsedFor	fur	keep animal warm	1
+UsedFor	glass	drink	1
+UsedFor	go to party	fun	1
+UsedFor	go to sleep	rest	1
+UsedFor	guitar	make music	1
+UsedFor	gun	kill someone	1
+UsedFor	hammer	drive nail	1
+UsedFor	hammer	pound nail	1
+UsedFor	have food	eat	1
+UsedFor	highway	travel	1
+UsedFor	hill	climb	1
+UsedFor	horse	ride	1
+UsedFor	internet	research	1
+UsedFor	jump rope	exercise	1
+UsedFor	kettle	boil water	1
+UsedFor	key	open door	1
+UsedFor	key	open lock	1
+UsedFor	key chain	keep key together	1
+UsedFor	keyboard	type	1
+UsedFor	kitchen	cook food	1
+UsedFor	knife	cut	1
+UsedFor	knife	stab	1
+UsedFor	library	do research	1
+UsedFor	literature	read	1
+UsedFor	master bedroom	sleep	1
+UsedFor	match	start fire	1
+UsedFor	meat	eat	1
+UsedFor	music stand	hold music	1
+UsedFor	needle	sew	1
+UsedFor	net	catch fish	1
+UsedFor	ocean	sail	1
+UsedFor	pan	cook	1
+UsedFor	paper	make paper airplane	1
+UsedFor	park area	park car	1
+UsedFor	park lot	park car	1
+UsedFor	pen	write	1
+UsedFor	pencil	write	1
+UsedFor	pencil	write something on paper	1
+UsedFor	pepper and salt	season food	1
+UsedFor	piggy bank	save money	1
+UsedFor	pillow case	cover pillow	1
+UsedFor	pipe	smoke tobacco	1
+UsedFor	play game	have fun	1
+UsedFor	play sport	competition	1
+UsedFor	play sport	fun	1
+UsedFor	pool	get out of heat	1
+UsedFor	pool	swim	1
+UsedFor	pot	cook	1
+UsedFor	pub	have drink	1
+UsedFor	pulpit	preach	1
+UsedFor	quill	write	1
+UsedFor	razor	shave	1
+UsedFor	refrigerator	keep food cold	1
+UsedFor	restaurant	eat out	1
+UsedFor	saddle	ride horse	1
+UsedFor	salt	melt ice	1
+UsedFor	saw	cut wood	1
+UsedFor	school	learn	1
+UsedFor	scissor	cut	1
+UsedFor	see	cut wood	1
+UsedFor	sheet	cover bed	1
+UsedFor	shoe	protect foot	1
+UsedFor	shovel	dig hole	1
+UsedFor	skin	cover body	1
+UsedFor	soap	clean	1
+UsedFor	soap	clean something	1
+UsedFor	soap	wash your hand	1
+UsedFor	soap	wash yourself	1
+UsedFor	sofa bed	sleep on	1
+UsedFor	spanish restaurant	eat spanish food	1
+UsedFor	spoon	eat	1
+UsedFor	stage	play	1
+UsedFor	stair	climb	1
+UsedFor	table	put thing on	1
+UsedFor	telephone	communicate	1
+UsedFor	telephone	communication	1
+UsedFor	think	solve problem	1
+UsedFor	ticket office	buy ticket	1
+UsedFor	tie your shoelace	keep your shoe on	1
+UsedFor	tissue holder	hold tissue	1
+UsedFor	tool	fix thing	1
+UsedFor	tooth	chew food	1
+UsedFor	toothbrush	clean your tooth	1
+UsedFor	towel bar	hang towel	1
+UsedFor	towel rack	hold towel	1
+UsedFor	typewriter	type letter	1
+UsedFor	violin	play music	1
+UsedFor	voice	sing	1
+UsedFor	water	drink	1
+UsedFor	weapon	kill	1
+UsedFor	window	look outside	1
+UsedFor	wine	drink	1
+UsedFor	wing	fly	1
+UsedFor	wood	fence in property	1
+UsedFor	wrench	tighten bolt	1
+UsedFor	wristwatch	tell time	1
+UsedFor	write instrument	write	1
