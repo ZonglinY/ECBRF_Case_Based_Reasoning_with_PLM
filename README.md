@@ -21,6 +21,11 @@ Similarly adjust *#SBATCH --output*, *--dataStore_dir*, and *--output_dir* in ``
 
 ```sbatch COMET```
 
+## Parser Arguments
+
+--subset_selection: -1 --- full train set; 0 ~ 6 --- 5 shot ~ 320 shot train set (to run few-shot experiments, please run full set experiments first, otherwise a small exception would occur);  
+--dataset_selection: 0 --- ConceptNet; 1: ATOMIC
+
 
 ## About this code
 
