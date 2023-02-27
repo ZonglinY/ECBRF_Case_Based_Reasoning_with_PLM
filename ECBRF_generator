@@ -2,16 +2,16 @@
 #SBATCH -J cbr_gene
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --partition=PA40q
-#SBATCH -w node05
+#SBATCH --partition=DGXq
+#SBATCH -w node18
 #SBATCH --gres=gpu:1
-#SBATCH --output /export/home2/zonglin001/Out/addedST_conceptnet_bart_cbr_fullTrainSet_gene.out
+#SBATCH --output /export/home/zonglin001/Out/addedST_conceptnet_bart_cbr_fullTrainSet_gene.out
 
 
 # --generator_model_type bart-base; gpt2-lmhead \
 python -u ./comet-case-based-train-updating-retriever-twoEmbedder-DPR-faster-May-TST.py \
-        --do_train --train_batch_size 32 --dev_batch_size 32 \
-        --do_test --test_batch_size 32 \
+        --do_train --train_batch_size 16 --dev_batch_size 16 \
+        --do_test --test_batch_size 16 \
         --smooth_score 0.0 --gradient_accumulation_steps 1 --num_btch_in_bundle 600 \
         --logging_steps 150 --learning_rate 1e-5 \
         --if_froze_both_retriever \
@@ -20,8 +20,8 @@ python -u ./comet-case-based-train-updating-retriever-twoEmbedder-DPR-faster-May
         --use_special_tokens_to_split_retrieved_cases --if_not_adding_special_relation_tokens --if_with_strt_mid_promp \
         --if_fast_train --if_try_one_gpu \
         --eval_per_steps 500 --patience 5 \
-        --home_dir /export/home2/zonglin001/ \
-        --output_dir /export/home2/zonglin001/Checkpoints/addedST_conceptnet_bart_cbr_fullTrainSet/  \
+        --dataStore_dir /export/home/zonglin001/Checkpoints/ \
+        --output_dir /export/home/zonglin001/Checkpoints/addedST_conceptnet_bart_cbr_fullTrainSet/  \
         --dataset_selection 0 --subset_selection -1 \
         --if_use_nshot_data --num_sample 1  \
         --if_randomly_mask_demonstrations --prob_randomly_mask_demonstrations 0.300 \

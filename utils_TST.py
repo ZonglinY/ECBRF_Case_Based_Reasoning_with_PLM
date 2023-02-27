@@ -1368,7 +1368,7 @@ def preprocess_datasets_for_generator_and_retriever_and_retriever_doc_ProperEOS(
 
     # note the mapping from rel to a unique number; used for rel_collection
     # since train/val/test set are processed together here, the mapping will be the same for each set
-    path_rel_id_noter = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "rel_id_noter_{}_{}.pt".format(args.generator_model_type.split('-')[0], args.dataset_selection))
+    path_rel_id_noter = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "rel_id_noter_{}_{}.pt".format(args.generator_model_type.split('-')[0], args.dataset_selection))
     # path_rel_id_noter can be shared
     if (args.subset_selection == -1 or (args.dataset_selection != 0 and args.dataset_selection != 1)) and not os.path.exists(path_rel_id_noter):
         rel_id_noter = {}
@@ -2420,35 +2420,35 @@ def find_path_tensor_dataset(args):
     if args.dataset_selection == 0:
         if args.use_obj_for_retrieval:
             print("INFO: using obj for retrieval")
-            path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_conceptnet_using_obj_for_retrieval_twoEmbedder_usingPad_EOSadded_DEBUG_EOSdouble_END_FOLLOWED.pt")
+            path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_conceptnet_using_obj_for_retrieval_twoEmbedder_usingPad_EOSadded_DEBUG_EOSdouble_END_FOLLOWED.pt")
             raise NotImplementedError
         elif args.use_only_sub_rel_for_retrieval:
             print("INFO: only using sub and rel for retrieval (to get embedding)")
             if args.use_special_tokens_to_split_retrieved_cases:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_conceptnet_use_only_sub_rel_for_retrieval_specialTokenSplit_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_conceptnet_use_only_sub_rel_for_retrieval_specialTokenSplit_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED")
             else:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_conceptnet_use_only_sub_rel_for_retrieval_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_conceptnet_use_only_sub_rel_for_retrieval_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED")
         else:
             if args.use_special_tokens_to_split_retrieved_cases:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_conceptnet_specialTokenSplit_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_conceptnet_specialTokenSplit_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED.pt")
             else:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_conceptnet_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_conceptnet_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED.pt")
     elif args.dataset_selection == 1:
         if args.use_obj_for_retrieval:
             print("INFO: using obj during retrieval")
-            path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_atomic_using_obj_for_retrieval_twoEmbedder_usingPad_EOSadded_DEBUG_EOSdouble_END_FOLLOWED.pt")
+            path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_atomic_using_obj_for_retrieval_twoEmbedder_usingPad_EOSadded_DEBUG_EOSdouble_END_FOLLOWED.pt")
             raise NotImplementedError
         elif args.use_only_sub_rel_for_retrieval:
             print("INFO: only using sub and rel for retrieval (to get embedding)")
             if args.use_special_tokens_to_split_retrieved_cases:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_atomic_use_only_sub_rel_for_retrieval_specialTokenSplit_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_atomic_use_only_sub_rel_for_retrieval_specialTokenSplit_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED")
             else:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_atomic_use_only_sub_rel_for_retrieval_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_atomic_use_only_sub_rel_for_retrieval_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED")
         else:
             if args.use_special_tokens_to_split_retrieved_cases:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_atomic_specialTokenSplit_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_atomic_specialTokenSplit_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED.pt")
             else:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_atomic_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_atomic_twoEmbedder_usingPad_EOSadded_DEBUG_EOSFOLLOWED.pt")
     elif args.dataset_selection == 2:
         if args.use_obj_for_retrieval:
             print("INFO: using obj during retrieval")
@@ -2457,53 +2457,53 @@ def find_path_tensor_dataset(args):
             print("INFO: only using sub and rel for retrieval (to get embedding)")
             if args.if_use_relation_for_shakes:
                 if args.use_special_tokens_to_split_retrieved_cases:
-                    path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_dataset_shakespear_use_only_sub_rel_for_retrieval_specialTokenSplit_useRelation.pt")
+                    path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_dataset_shakespear_use_only_sub_rel_for_retrieval_specialTokenSplit_useRelation.pt")
                 else:
-                    path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_dataset_shakespear_use_only_sub_rel_for_retrieval_useRelation.pt")
+                    path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_dataset_shakespear_use_only_sub_rel_for_retrieval_useRelation.pt")
             else:
                 if args.use_special_tokens_to_split_retrieved_cases:
-                    path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_dataset_shakespear_use_only_sub_rel_for_retrieval_specialTokenSplit.pt")
+                    path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_dataset_shakespear_use_only_sub_rel_for_retrieval_specialTokenSplit.pt")
                 else:
-                    path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_dataset_shakespear_use_only_sub_rel_for_retrieval.pt")
+                    path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_dataset_shakespear_use_only_sub_rel_for_retrieval.pt")
         else:
             if args.if_use_relation_for_shakes:
                 if args.use_special_tokens_to_split_retrieved_cases:
-                    path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_dataset_shakespear_specialTokenSplit_useRelation.pt")
+                    path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_dataset_shakespear_specialTokenSplit_useRelation.pt")
                 else:
-                    path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_dataset_shakespear_useRelation.pt")
+                    path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_dataset_shakespear_useRelation.pt")
             else:
                 if args.use_special_tokens_to_split_retrieved_cases:
-                    path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_dataset_shakespear_specialTokenSplit.pt")
+                    path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_dataset_shakespear_specialTokenSplit.pt")
                 else:
-                    path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_dataset_shakespear.pt")
+                    path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_dataset_shakespear.pt")
     elif args.dataset_selection == 3:
         if args.use_obj_for_retrieval:
             raise Exception
         elif args.use_only_sub_rel_for_retrieval:
             print("INFO: only using sub and rel for retrieval (to get embedding)")
             if args.use_special_tokens_to_split_retrieved_cases:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_e2e_use_only_sub_rel_for_retrieval_specialTokenSplit.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_e2e_use_only_sub_rel_for_retrieval_specialTokenSplit.pt")
             else:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_e2e_use_only_sub_rel_for_retrieval.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_e2e_use_only_sub_rel_for_retrieval.pt")
         else:
             if args.use_special_tokens_to_split_retrieved_cases:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_e2e_specialTokenSplit.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_e2e_specialTokenSplit.pt")
             else:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_e2e.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_e2e.pt")
     elif args.dataset_selection == 4:
         if args.use_obj_for_retrieval:
             raise Exception
         elif args.use_only_sub_rel_for_retrieval:
             print("INFO: only using sub and rel for retrieval (to get embedding)")
             if args.use_special_tokens_to_split_retrieved_cases:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_sentiment_use_only_sub_rel_for_retrieval_specialTokenSplit.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_sentiment_use_only_sub_rel_for_retrieval_specialTokenSplit.pt")
             else:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_sentiment_use_only_sub_rel_for_retrieval.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_sentiment_use_only_sub_rel_for_retrieval.pt")
         else:
             if args.use_special_tokens_to_split_retrieved_cases:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_sentiment_specialTokenSplit.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_sentiment_specialTokenSplit.pt")
             else:
-                path_tensor_datasets = os.path.join(args.home_dir, "Checkpoints/ATOMIC_backup_for_debug/", "tensor_datasets_sentiment.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_sentiment.pt")
 
     # comment this out so that new gpt2 experiment will generate new corresponding tensor_datasets; 9/1/2021
     # if args.generator_model_type != "gpt2-lmhead":
@@ -2536,29 +2536,29 @@ def find_path_tensor_dataset(args):
 def find_path_sample_ckb_dict(args, use_only_sub_rel_for_retrieval=False):
     if args.dataset_selection == 0:
         if args.use_only_sub_rel_for_retrieval or use_only_sub_rel_for_retrieval:
-            path_sample_ckb_dict = os.path.join(args.home_dir, 'Checkpoints/ATOMIC_backup_for_debug/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_conceptnet.pt')
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_conceptnet.pt')
         else:
-            path_sample_ckb_dict = os.path.join(args.home_dir, 'Checkpoints/ATOMIC_backup_for_debug/', 'sample_ckb_dict_dpr_for_bothFro_retriever_conceptnet.pt')
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_conceptnet.pt')
     elif args.dataset_selection == 1:
         if args.use_only_sub_rel_for_retrieval or use_only_sub_rel_for_retrieval:
-            path_sample_ckb_dict = os.path.join(args.home_dir, 'Checkpoints/ATOMIC_backup_for_debug/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_atomic.pt')
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_atomic.pt')
         else:
-            path_sample_ckb_dict = os.path.join(args.home_dir, 'Checkpoints/ATOMIC_backup_for_debug/', 'sample_ckb_dict_dpr_for_bothFro_retriever_atomic.pt')
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_atomic.pt')
     elif args.dataset_selection == 2:
         if args.use_only_sub_rel_for_retrieval or use_only_sub_rel_for_retrieval:
-            path_sample_ckb_dict = os.path.join(args.home_dir, 'Checkpoints/ATOMIC_backup_for_debug/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_shakespear.pt')
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_shakespear.pt')
         else:
-            path_sample_ckb_dict = os.path.join(args.home_dir, 'Checkpoints/ATOMIC_backup_for_debug/', 'sample_ckb_dict_dpr_for_bothFro_retriever_shakespear.pt')
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_shakespear.pt')
     elif args.dataset_selection == 3:
         if args.use_only_sub_rel_for_retrieval or use_only_sub_rel_for_retrieval:
-            path_sample_ckb_dict = os.path.join(args.home_dir, 'Checkpoints/ATOMIC_backup_for_debug/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_e2e.pt')
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_e2e.pt')
         else:
-            path_sample_ckb_dict = os.path.join(args.home_dir, 'Checkpoints/ATOMIC_backup_for_debug/', 'sample_ckb_dict_dpr_for_bothFro_retriever_e2e.pt')
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_e2e.pt')
     elif args.dataset_selection == 4:
         if args.use_only_sub_rel_for_retrieval or use_only_sub_rel_for_retrieval:
-            path_sample_ckb_dict = os.path.join(args.home_dir, 'Checkpoints/ATOMIC_backup_for_debug/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_sentiment.pt')
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_sentiment.pt')
         else:
-            path_sample_ckb_dict = os.path.join(args.home_dir, 'Checkpoints/ATOMIC_backup_for_debug/', 'sample_ckb_dict_dpr_for_bothFro_retriever_sentiment.pt')
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_sentiment.pt')
     if args.retriever_model_type != "dpr":
         path_sample_ckb_dict = path_sample_ckb_dict.split('.')
         assert len(path_sample_ckb_dict) == 2

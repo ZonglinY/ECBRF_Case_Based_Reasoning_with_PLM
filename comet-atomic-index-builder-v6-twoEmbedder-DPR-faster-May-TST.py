@@ -2162,7 +2162,7 @@ class embedding_builder:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output_dir", default=None, type=str, required=False, help="The output directory where the model predictions and checkpoints will be written.")
-    parser.add_argument("--home_dir", default=None, type=str, required=False, help="The home directory of zonglin.")
+    parser.add_argument("--dataStore_dir", default=None, type=str, required=False, help="The home directory of zonglin.")
     parser.add_argument("--train_dataset", type=str, nargs="+", default=["./Data/atomic/v4_atomic_trn.csv"])
     parser.add_argument("--eval_dataset", type=str, nargs="+", default=["./Data/atomic/v4_atomic_dev.csv"])
     parser.add_argument("--test_dataset", type=str, nargs="+", default=["./Data/atomic/v4_atomic_tst.csv"])

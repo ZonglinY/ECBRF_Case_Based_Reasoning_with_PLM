@@ -750,7 +750,7 @@ def main():
     parser.add_argument("--do_eval", action="store_true", help="do evaluation in the end")
     parser.add_argument("--output_dir", default=None, type=str, required=True,
                         help="The output directory where the model predictions and checkpoints will be written.")
-    parser.add_argument("--home_dir", default="/export/home/zonglin001/", type=str, required=False, help="The home directory of zonglin.")
+    parser.add_argument("--dataStore_dir", default="/export/home/zonglin001/", type=str, required=False, help="The home directory of zonglin.")
     parser.add_argument("--train_dataset", type=str, nargs="+", default=["./Data/conceptnet/train100k_CN_sorted.txt"])
     # parser.add_argument("--eval_dataset", type=str, nargs="+", default=["data/conceptnet/dev1_CN.txt", "data/conceptnet/dev2_CN.txt"])
     parser.add_argument("--eval_dataset", type=str, nargs="+", default=["./Data/conceptnet/dev1_CN_sorted.txt"])
@@ -762,13 +762,9 @@ def main():
                         help="predict which part of the triples")
     # newly added in 8/21/2021; to calculate the proper max_additional_cases
     parser.add_argument("--num_cases_per_query", type=int, default=3)
-    # Q: 100 here is not enough, we should use 150; Originally we use 100 here
     parser.add_argument("--max_additional_cases", type=int, default=150)
-    # parser.add_argument("--max_e1", type=int, default=15)
     parser.add_argument("--max_e1", type=int, default=24)
     parser.add_argument("--max_r", type=int, default=10)
-    # Q: this max_e2 is not enough. We should at least use 35
-    # parser.add_argument("--max_e2", type=int, default=20)
     parser.add_argument("--max_e2", type=int, default=36)
 
     parser.add_argument("--seed", type=int, default=123)
@@ -1038,6 +1034,10 @@ def main():
     #     os.remove(path_if_finished_training)
     assert args.do_train or args.do_test
     ## File systems
+    # about "$dataStore_dir$/ECBRF_shared_data_for_reuse/", which is to stored processed data for reuse
+    if not os.path.exists(os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse")):
+        os.makedirs(os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse"))
+    # about args.output_dir
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
         print("Output_dir is an empty file now")
@@ -1070,17 +1070,6 @@ def main():
     else:
         # do_test while training is not finished
         raise Exception
-    # # also support old versions
-    # elif args.do_test and (os.path.exists(path_if_no_need_for_retrieval) or os.path.exists(path_prev_if_no_need_for_retrieval)):
-    #     torch.save(torch.ones(1,1), path_if_finished_training)
-    #     # allow the retriever to work
-    #     if os.path.exists(path_if_no_need_for_retrieval):
-    #         os.remove(path_if_no_need_for_retrieval)
-    #     if os.path.exists(path_prev_if_no_need_for_retrieval):
-    #         os.remove(path_prev_if_no_need_for_retrieval)
-    #     remaining_files = os.listdir(args.output_dir)
-    #     print("Files exist in output_dir before evaluation begins:")
-    #     print(remaining_files)
 
 
     # delete files from last time's running (that is misleading for this time)
@@ -1550,7 +1539,6 @@ def main():
                         # tmp_lm_labels = [1 if tmp_lm_labels[i] == -100 else tmp_lm_labels[i] for i in range(len(tmp_lm_labels))]
                         # print("input_lm_labels:", tokenizer_generator.decode(tmp_lm_labels))
                         # IMPORTANT: add max_additional_cases
-                        # Q: why output looks like [-(args.max_e2+7):]
                         if step == 0:
                             print("indices.size(): ", indices.size())
                         if "gpt2" in args.generator_model_type:
