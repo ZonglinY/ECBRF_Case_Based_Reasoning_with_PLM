@@ -32,4 +32,7 @@ Similarly adjust *#SBATCH --output*, *--dataStore_dir*, and *--output_dir* in ``
 The code is designed to dynamically retrieve cases to support updating the retriever during finetuning. However, during my very preliminary experiments, I find that at least with a relatively small number of retrieved documents (e.g., 4), updating the retriever only leads to comparable results and is significantly slower. So I do not try to update the retriever in the following experiments, and slightly update the code for faster running. Currently, the code can support updating the retriever with small modifications. If it is in need, I would continue to refine the code to support updating the retriever.
 
 
+<!-- ## About this paper
 
+The main experiments of this paper that can show the effectiveness of ECBRF were first obtained at the end of 2020. Later I decided to enable it with dynamic retrieval to also update the retriever, which took me much time since I wrote it from scratch and did not use existing packages for the retriever. If this paper could be published earlier, it might have made more contributions to the field.  
+We appreciate the reviewers and meta-reviewer for this paper in EACL 2023, who recognize the contribution of this paper. -->
