@@ -4,6 +4,12 @@ The github repo for [End-to-end Case-Based Reasoning for Commonsense Knowledge B
 Here the code can be (almost) directly used on work stations that use slurm.  
 If your work station does not use slurm, just overlook anything related to slurm and only run the python commands in shell scripts mentioned below.
 
+In general, the code is designed to run in two steps.  
+The first step is to obtain a checkpoint when test perplexity would be obtained (by command ```sbatch ECBRF_generator```, ```sbatch ECBRF_retriever```, or ```sbatch COMET``` illustrated below);  
+the second step is to run generator.py to obtain BLEU for the existing checkpoint (by command ```sbatch generation```).
+
+# Step 1
+
 ## To run the code on ECBRF
 
 First, besides adjusting slurm parameters, please adjust *#SBATCH --output*, *--dataStore_dir*, and *--output_dir* in ```ECBRF_generator``` and ```ECBRF_retriever```.  
@@ -23,8 +29,23 @@ Similarly adjust *#SBATCH --output*, *--dataStore_dir*, and *--output_dir* in ``
 
 ## Parser arguments
 
-*--subset_selection*: -1 --- full train set; 0 ~ 6 --- 5 shot ~ 320 shot train set (to run few-shot experiments, please run full set experiment first, otherwise a small exception would occur);  
-*--dataset_selection*: 0 --- ConceptNet; 1 --- ATOMIC
+*SBATCH --output*: file address to store the print output  
+*--subset_selection*: -1: full train set; 0 ~ 6: 5 shot ~ 320 shot train set (to run few-shot experiments, please run full set experiment first, otherwise a small exception would occur);  
+*--dataset_selection*: 0: ConceptNet; 1: ATOMIC
+
+# Step 2
+
+First adjust *SBATCH --output*, *--output_dir*, *--model_type*, *--dataset_selection*, *--if_ECBRF* accordingly, and then 
+
+```sbatch generation```
+
+## Parser arguments
+
+*SBATCH --output*: file address to store the print output  
+*--output_dir*: the same as used in step 1, where the checkpoint are saved  
+*--model_type*: bart-base or gpt2-lmhead  
+*--dataset_selection*: 0: ConceptNet; 1: ATOMIC  
+*--if_ECBRF*: 0: To run COMET baseline; 1: To run ECBRF  
 
 
 ## About this code
