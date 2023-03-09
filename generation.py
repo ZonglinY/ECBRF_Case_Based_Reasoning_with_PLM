@@ -107,6 +107,7 @@ def main():
     parser.add_argument("--BLEU_n", type=int, default=2, help="metric to use (if BLEU_n = 2, then we are using BLEU-2 metric)")
     parser.add_argument("--num_sample", type=int, default=1, help="the nth time of sampling data to use; only useful when if_use_full_memory_store_while_subset")
     parser.add_argument("--if_val", type=int, default=0, help="0: use test set; 1: use validation set")
+    parser.add_argument("--if_ECBRF", type=int, default="1", help="0: to run COMET baseline; 1: to run ECBRF")
 
 
     args = parser.parse_args()
@@ -118,9 +119,20 @@ def main():
     assert not (args.is_greedy and args.top_k)
     assert (args.is_greedy or args.beam_size or args.top_p or args.top_k)
     assert args.if_val == 0 or args.if_val == 1
+    assert args.if_ECBRF == 0 or args.if_ECBRF == 1
 
     if args.if_without_none:
-        assert args.dataset_selection == 1
+        if not args.dataset_selection == 1:
+            raise Exception("Only ATOMIC dataset need to set 'if_without_none' to truth.")
+
+    if args.if_ECBRF:
+        args.if_with_strt_mid_promp = True
+        args.if_not_with_strt_mid_promp = False
+        args.if_without_case = False
+    else:
+        args.if_with_strt_mid_promp = False
+        args.if_not_with_strt_mid_promp = True
+        args.if_without_case = True
 
     if args.dataset_selection == 0:
         if "t5" in args.model_type:
@@ -141,9 +153,9 @@ def main():
             args.test_dataset = ["./Data/atomic/v4_atomic_tst.csv"]
         root_data_dir = "./Data/atomic/"
         if not args.if_without_none == True:
-            args.if_without_none == True
-            print("Warning: args.if_without_none == False, and we change args.if_without_none == True before generation.")
-            raise Exception("we only test the results on the test instances whose e2 is not None")
+            args.if_without_none = True
+            # print("Warning: args.if_without_none == False, and we change args.if_without_none == True before generation.")
+            # raise Exception("we only test the results on the test instances whose e2 is not None")
     elif args.dataset_selection == 2:
         args.rel_lang = False
         args.max_e1 = 130
