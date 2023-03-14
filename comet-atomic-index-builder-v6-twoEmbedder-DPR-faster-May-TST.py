@@ -189,6 +189,9 @@ class embedding_builder:
                 self.times_more_num_cases_to_retrieve *= 2
             if self.args.use_only_sub_rel_for_retrieval:
                 self.times_more_num_cases_to_retrieve *= 3
+            # newly added 2023/03/14; since with less num_cases, times_more_num_cases_to_retrieve might not be enough
+            if self.args.num_cases < 3:
+                self.times_more_num_cases_to_retrieve = int(self.times_more_num_cases_to_retrieve * 3 / self.args.num_cases)
         else:
             raise Exception('Invalid rerank_selection')
         # cnt_next_bundle: the number of current next_bundle to retrieve
@@ -822,6 +825,7 @@ class embedding_builder:
                             except:
                                 print("len(id_with_different_relation): ", len(id_with_different_relation))
                                 print("tmp_ttl_cases: ", tmp_ttl_cases)
+                                print('cur_rel: ', ttl_cur_tuple_with_bundle_order[id_bundle].strip('\n').split('\t'))
                                 print("times_more_num_cases_to_retrieve: ", self.times_more_num_cases_to_retrieve)
                                 raise Exception("Can't load id_with_different_relation OR times_more_num_cases_to_retrieve is not enough.")
                             id_with_different_source = id_with_different_relation
