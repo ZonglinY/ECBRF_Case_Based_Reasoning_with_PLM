@@ -30,8 +30,18 @@ Similarly adjust *#SBATCH --output*, *--dataStore_dir*, and *--output_dir* in ``
 ## Parser arguments
 
 *SBATCH --output*: file address to store the print output  
+*--dataStore_dir*: file address to store some shared files that can be reused by other experiments using this repo  
+*--output_dir*: where the checkpoint files for current experiment are saved  
+*--model_type*: bart-base or gpt2-lmhead  
 *--subset_selection*: -1 --- full train set; 0 ~ 6 --- 5 shot ~ 320 shot train set (to run few-shot experiments, please run full set experiment first, otherwise a small exception would occur);  
-*--dataset_selection*: 0 --- ConceptNet; 1 --- ATOMIC
+*--dataset_selection*: 0 --- ConceptNet; 1 --- ATOMIC  
+*--prob_randomly_mask_demonstrations*: to adjust probability for *random mask*, by default is 0.3  
+
+## Other Notes
+
+1. *--dataStore_dir* can be set to the same file addr for all experiments using this repo, since it stores some files that can be possibly reused by all experiments using this repo  
+2. ECBRF involves inter-process communication (here the two processes are generator and retriever), so it is important to make sure *--output_dir* (the checkpoint dir) is empty for both ```ECBRF_generator``` and ```ECBRF_retriever``` before the experiments. You can also assure that by always running ```ECBRF_generator``` first, and then (maybe after 10 seconds) to run ```ECBRF_retriever``` (since ```ECBRF_generator``` will automatically delete all files in *--output_dir* if these files do not correspond to a finished experiment).
+
 
 # Step 2
 
