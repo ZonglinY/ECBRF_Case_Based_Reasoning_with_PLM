@@ -1,5 +1,5 @@
 # ECBRF_Case_Based_Reasoning_with_PLM
-The github repo for [End-to-end Case-Based Reasoning for Commonsense Knowledge Base Completion](http://sentic.net/commonsense-knowledge-base-completion.pdf), accepted by EACL 2023 (main).
+This is the official implementation of the paper - [End-to-end Case-Based Reasoning for Commonsense Knowledge Base Completion](http://sentic.net/commonsense-knowledge-base-completion.pdf), which is accepted by EACL 2023 (main).
 
 Here the code can be (almost) directly used on work stations that use slurm.  
 If your work station does not use slurm, just overlook anything related to slurm and only run the python commands in shell scripts mentioned below.
