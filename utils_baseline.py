@@ -72,7 +72,7 @@ def load_sentiment_data(splitted_data_dir="./Data/sentiment/splitted/", if_add_e
 #                      when force_split_id is speficied, len(split_size_list) should be 1, and force_split_id is the subset_selection for the new subset
 # FUNCTION
 #   to split the train set of sentiment sentence classification dataset, obtain the subset (and its corresponding index in full set) for further experiment
-def sentiment_train_subset_obtainer(root_data_dir="./Data/sentiment/splitted/", split_size_list=[60, 200, 600], force_split_id=None):
+def sentiment_train_subset_obtainer(root_data_dir="./Data/sentiment/splitted/", split_size_list=[20, 60, 200, 600], force_split_id=None):
     train_set, val_set, test_set = load_sentiment_data(root_data_dir, if_add_e2Rel=True)
     len_train = len(train_set)
     assert len_train > max(split_size_list)

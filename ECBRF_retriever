@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH -J cbr_retr
+#SBATCH -J rr0_retr
 #SBATCH -N 1
 #SBATCH -n 1
 #SBATCH --partition=DGXq
-#SBATCH -w node18
+#SBATCH -w node19
 #SBATCH --gres=gpu:1
-#SBATCH --output /export/home/zonglin001/Out/addedST_conceptnet_bart_cbr_fullTrainSet_retr.out
+#SBATCH --output /export/home/zonglin001/Out/sentiment_bart_cbr_randRetrieval_subset0_bs16_retr.out
 
 ## with frozen retriever
 # num_steps has no use for now
@@ -21,12 +21,13 @@ python -u ./comet-atomic-index-builder-v6-twoEmbedder-DPR-faster-May-TST.py  \
         --rerank_selection 1 \
         --use_special_tokens_to_split_retrieved_cases --if_not_adding_special_relation_tokens \
         --dataStore_dir /export/home/zonglin001/Checkpoints/ \
-        --output_dir /export/home/zonglin001/Checkpoints/addedST_conceptnet_bart_cbr_fullTrainSet/     \
-        --dataset_selection 0 --subset_selection -1 \
+        --output_dir /export/home/zonglin001/Checkpoints/sentiment_bart_cbr_randRetrieval_subset0_bs16/     \
+        --dataset_selection 4 --subset_selection 0 \
         --if_use_nshot_data --num_sample 1 \
         --if_reverse_order_demonstrations \
+        --random_retrieval \
         # --if_use_full_memory_store_while_subset --subset_selection_while_use_full_memory_store 3 \
-        # --random_retrieval \
+
 
 
 

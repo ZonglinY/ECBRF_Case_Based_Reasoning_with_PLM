@@ -6,7 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 sys.path.insert(0, "..")
 from transformers import (CONFIG_NAME, WEIGHTS_NAME, AdamW,
-                            get_linear_schedule_with_warmup, cached_path)
+                            get_linear_schedule_with_warmup)
 # from transformers import (BertLMHeadModel, BertTokenizer, BertConfig)
 from transformers import (GPT2LMHeadModel, GPT2Tokenizer, GPT2Config)
 from transformers import (BartForConditionalGeneration, BartTokenizer, BartConfig)
@@ -229,14 +229,16 @@ def batch_step(args, model_generator, model_retriever, model_retriever_doc, batc
                 print("Current code is only designed for the situation where only n_doc is 1.")
             # print("case_aug_gene_lm_labels[cur_data_id, 0, :10]: ", case_aug_gene_lm_labels[cur_data_id, 0, :10])
             if "bart" in args.generator_model_type:
-                cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 0]).strip()
+                # cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 0]).strip()
+                # since we have added a <bos> token
+                cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 1]).strip()
             else:
                 raise NotImplementedError
             if not (cur_true_label == 'positive' or cur_true_label == 'negative'):
                 raise Exception("Not acceptable cur_true_label: {}, it should either be positive or negative.".format(cur_true_label))
             if "bart" in args.generator_model_type:
-                prob_positive_pred = torch.exp(seq_logprobs_backup[cur_data_id, 0, 0, 22173])
-                prob_negative_pred = torch.exp(seq_logprobs_backup[cur_data_id, 0, 0, 33407])
+                prob_positive_pred = torch.exp(seq_logprobs_backup[cur_data_id, 0, 1, 22173])
+                prob_negative_pred = torch.exp(seq_logprobs_backup[cur_data_id, 0, 1, 33407])
             else:
                 raise NotImplementedError
             if (prob_positive_pred >= prob_negative_pred and cur_true_label == 'positive') or (prob_positive_pred < prob_negative_pred and cur_true_label == 'negative'):
@@ -334,14 +336,16 @@ def batch_step_fast_train_1GPU(args, model_generator, model_retriever, model_ret
                 print("Current code is only designed for the situation where only n_doc is 1.")
             # print("case_aug_gene_lm_labels[cur_data_id, 0, :10]: ", case_aug_gene_lm_labels[cur_data_id, 0, :10])
             if "bart" in args.generator_model_type:
-                cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 0]).strip()
+                # cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 0]).strip()
+                # since we have added a <bos> token
+                cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 1]).strip()
             else:
                 raise NotImplementedError
             if not (cur_true_label == 'positive' or cur_true_label == 'negative'):
                 raise Exception("Not acceptable cur_true_label: {}, it should either be positive or negative.".format(cur_true_label))
             if "bart" in args.generator_model_type:
-                prob_positive_pred = torch.exp(seq_logprobs[cur_data_id, 0, 0, 22173])
-                prob_negative_pred = torch.exp(seq_logprobs[cur_data_id, 0, 0, 33407])
+                prob_positive_pred = torch.exp(seq_logprobs[cur_data_id, 0, 1, 22173])
+                prob_negative_pred = torch.exp(seq_logprobs[cur_data_id, 0, 1, 33407])
             else:
                 raise NotImplementedError
             if (prob_positive_pred >= prob_negative_pred and cur_true_label == 'positive') or (prob_positive_pred < prob_negative_pred and cur_true_label == 'negative'):
@@ -440,14 +444,16 @@ def batch_step_eval_analysis(args, model_generator, model_retriever, model_retri
                 print("Current code is only designed for the situation where only n_doc is 1.")
             # print("case_aug_gene_lm_labels[cur_data_id, 0, :10]: ", case_aug_gene_lm_labels[cur_data_id, 0, :10])
             if "bart" in args.generator_model_type:
-                cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 0]).strip()
+                # cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 0]).strip()
+                # since we have added a <bos> token
+                cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 1]).strip()
             else:
                 raise NotImplementedError
             if not (cur_true_label == 'positive' or cur_true_label == 'negative'):
                 raise Exception("Not acceptable cur_true_label: {}, it should either be positive or negative.".format(cur_true_label))
             if "bart" in args.generator_model_type:
-                prob_positive_pred = torch.exp(seq_logprobs[cur_data_id, 0, 0, 22173])
-                prob_negative_pred = torch.exp(seq_logprobs[cur_data_id, 0, 0, 33407])
+                prob_positive_pred = torch.exp(seq_logprobs[cur_data_id, 0, 1, 22173])
+                prob_negative_pred = torch.exp(seq_logprobs[cur_data_id, 0, 1, 33407])
             else:
                 raise NotImplementedError
             if (prob_positive_pred >= prob_negative_pred and cur_true_label == 'positive') or (prob_positive_pred < prob_negative_pred and cur_true_label == 'negative'):
@@ -515,14 +521,16 @@ def batch_step_eval(args, model_generator, batch, tokenizer_gene):
                 print("Current code is only designed for the situation where only n_doc is 1.")
             # print("case_aug_gene_lm_labels[cur_data_id, 0, :10]: ", case_aug_gene_lm_labels[cur_data_id, 0, :10])
             if "bart" in args.generator_model_type:
-                cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 0]).strip()
+                # cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 0]).strip()
+                # since we have added a <bos> token
+                cur_true_label = tokenizer_gene.decode(case_aug_gene_lm_labels[cur_data_id, 0, 1]).strip()
             else:
                 raise NotImplementedError
             if not (cur_true_label == 'positive' or cur_true_label == 'negative'):
                 raise Exception("Not acceptable cur_true_label: {}, it should either be positive or negative.".format(cur_true_label))
             if "bart" in args.generator_model_type:
-                prob_positive_pred = torch.exp(seq_logprobs[cur_data_id, 0, 0, 22173])
-                prob_negative_pred = torch.exp(seq_logprobs[cur_data_id, 0, 0, 33407])
+                prob_positive_pred = torch.exp(seq_logprobs[cur_data_id, 0, 1, 22173])
+                prob_negative_pred = torch.exp(seq_logprobs[cur_data_id, 0, 1, 33407])
             else:
                 raise NotImplementedError
             if (prob_positive_pred >= prob_negative_pred and cur_true_label == 'positive') or (prob_positive_pred < prob_negative_pred and cur_true_label == 'negative'):
@@ -871,7 +879,6 @@ def main():
         else:
             raise NotImplementedError
     elif args.dataset_selection == 1:
-        args.learning_rate = 1e-5
         args.max_e1 = 25
         args.max_r = 15
         args.max_e2 = 38
@@ -907,7 +914,6 @@ def main():
         else:
             raise NotImplementedError
     elif args.dataset_selection == 2:
-        args.learning_rate = 1e-5
         args.max_e1 = 130
         if args.if_use_relation_for_shakes:
             args.max_r = 6
@@ -920,7 +926,6 @@ def main():
         args.if_without_none = False
         print("warning: need to manually set up args.eval_per_steps.")
     elif args.dataset_selection == 3:
-        args.learning_rate = 1e-5
         args.max_e1 = 60
         args.max_r = 2
         args.max_e2 = 95
@@ -930,7 +935,6 @@ def main():
         args.if_without_none = False
         print("warning: need to manually set up args.eval_per_steps.")
     elif args.dataset_selection == 4:
-        args.learning_rate = 1e-5
         args.max_e1 = 110
         args.max_r = 2
         args.max_e2 = 30
@@ -1108,7 +1112,7 @@ def main():
     # tokenizer_retriever_doc = add_special_tokens(args, tokenizer_retriever_doc)
 
     ## load pretrained model; fit model with tokenizer
-    model_generator = Generator_Model.from_pretrained(Generator_Model_Name)
+    model_generator = Generator_Model.from_pretrained(Generator_Model_Name, device_map="auto")
     model_retriever = DPRQuestionEncoder.from_pretrained('facebook/dpr-question_encoder-single-nq-base')
     model_retriever_doc = DPRContextEncoder.from_pretrained('facebook/dpr-ctx_encoder-single-nq-base')
     print("INFO: Using DPR pre-training models")
@@ -1116,7 +1120,7 @@ def main():
     model_generator.resize_token_embeddings(len(tokenizer_generator))
     # word_embeddings = model_generator.transformer.wte.weight
     # position_embeddings = model_generator.transformer.wpe.weight
-    model_generator.to(device1)
+    # model_generator.to(device1)
     if not args.if_try_one_gpu:
         # model_retriever.resize_token_embeddings(len(tokenizer_retriever))
         model_retriever.to(device2)

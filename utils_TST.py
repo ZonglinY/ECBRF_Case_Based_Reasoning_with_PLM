@@ -2039,7 +2039,7 @@ def concat_cur_bundle_and_encoded_cases_EOSfixed_Bart_randomly_mask_demonstratio
 
     ## combine case_aug_gene_input_id and case_aug_gene_input_id_noRetrieval
     # random selection
-    full_ids = np.arange(case_aug_gene_input_id.size()[0], dtype=np.long).tolist()
+    full_ids = np.arange(case_aug_gene_input_id.size()[0], dtype=np.longlong).tolist()
     ids_withRetrieval, ids_withoutRetrieval = [], []
     for id in full_ids:
         tmp_rand = np.random.rand(1)[0]
