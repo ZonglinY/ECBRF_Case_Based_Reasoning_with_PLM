@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH -J rr0_gene
+#SBATCH -J cmt0_gene
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --partition=PV1003q
-#SBATCH -w node15
+#SBATCH --partition=DGXq
+#SBATCH -w node21
 #SBATCH --gres=gpu:1
-#SBATCH --output /export/home/zonglin001/Out/sentiment_bart_cbr_randRetrieval_subset0_bs16_gene.out
+#SBATCH --output /export/home/zonglin001/Out/financial_bart_comet_subset0_bs16_Seed106_gene.out
 
 
 # --generator_model_type bart-base; gpt2-lmhead \
@@ -21,11 +21,13 @@ python -u ./comet-case-based-train-updating-retriever-twoEmbedder-DPR-faster-May
         --if_fast_train --if_try_one_gpu \
         --eval_per_steps 500 --patience 5 \
         --dataStore_dir /export/home/zonglin001/Checkpoints/ \
-        --output_dir /export/home/zonglin001/Checkpoints/sentiment_bart_cbr_randRetrieval_subset0_bs16/  \
-        --dataset_selection 4 --subset_selection 0 \
+        --output_dir /export/home/zonglin001/Checkpoints/financial_bart_comet_subset0_bs16_Seed106/  \
+        --seed 106 \
+        --dataset_selection 5 --subset_selection 0 \
         --if_use_nshot_data --num_sample 1  \
-        --if_randomly_mask_demonstrations --prob_randomly_mask_demonstrations 0.300 \
-        # --if_comet_baseline \
+        --if_comet_baseline \
+        # --if_randomly_mask_demonstrations --prob_randomly_mask_demonstrations 0.000 \
+
         # --if_only_use_retrieved_target \
 
 

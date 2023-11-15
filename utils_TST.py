@@ -2490,20 +2490,26 @@ def find_path_tensor_dataset(args):
                 path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_e2e_specialTokenSplit.pt")
             else:
                 path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_e2e.pt")
-    elif args.dataset_selection == 4:
+    elif args.dataset_selection == 4 or args.dataset_selection == 5:
+        if args.dataset_selection == 4:
+            dataset_abrev_name = "sentiment"
+        elif args.dataset_selection == 5:
+            dataset_abrev_name = "financial"
+        else:
+            raise NotImplementError
         if args.use_obj_for_retrieval:
             raise Exception
         elif args.use_only_sub_rel_for_retrieval:
             print("INFO: only using sub and rel for retrieval (to get embedding)")
             if args.use_special_tokens_to_split_retrieved_cases:
-                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_sentiment_use_only_sub_rel_for_retrieval_specialTokenSplit.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_" + dataset_abrev_name + "_use_only_sub_rel_for_retrieval_specialTokenSplit.pt")
             else:
-                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_sentiment_use_only_sub_rel_for_retrieval.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_" + dataset_abrev_name + "_use_only_sub_rel_for_retrieval.pt")
         else:
             if args.use_special_tokens_to_split_retrieved_cases:
-                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_sentiment_specialTokenSplit.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_" + dataset_abrev_name + "_specialTokenSplit.pt")
             else:
-                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_sentiment.pt")
+                path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_" + dataset_abrev_name + ".pt")
 
     # comment this out so that new gpt2 experiment will generate new corresponding tensor_datasets; 9/1/2021
     # if args.generator_model_type != "gpt2-lmhead":
@@ -2559,6 +2565,11 @@ def find_path_sample_ckb_dict(args, use_only_sub_rel_for_retrieval=False):
             path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_sentiment.pt')
         else:
             path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_sentiment.pt')
+    elif args.dataset_selection == 5:
+        if args.use_only_sub_rel_for_retrieval or use_only_sub_rel_for_retrieval:
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_financial.pt')
+        else:
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_financial.pt')
     if args.retriever_model_type != "dpr":
         path_sample_ckb_dict = path_sample_ckb_dict.split('.')
         assert len(path_sample_ckb_dict) == 2

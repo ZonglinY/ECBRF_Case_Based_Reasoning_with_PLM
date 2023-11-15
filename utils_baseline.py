@@ -4,6 +4,8 @@ import json
 import torch
 import torch.nn.functional as F
 from nltk.tokenize import word_tokenize, RegexpTokenizer
+from datasets import load_dataset
+
 
 # np.random.seed(10)
 np.random.seed(11)
@@ -49,6 +51,8 @@ def load_sentiment_data(splitted_data_dir="./Data/sentiment/splitted/", if_add_e
                     cur_label_text = "negative"
                 elif cur_label == 1:
                     cur_label_text = "positive"
+                elif cur_label == 0.5:
+                    cur_label_text = "neutral"
                 else:
                     raise Exception("cur_label: ", cur_label)
                 # as there's no relation
@@ -373,9 +377,119 @@ def sentiment_labelled_sentence_data_split(raw_data_root_dir="./Data/sentiment/r
     # print("len(test_set): ", len(test_set))
     print("train_set[:10]", train_set[:10])
 
-    with open(os.path.join(data_to_save_dir, "train.json"), 'w') as f:
-        json.dump(train_set, f)
-    with open(os.path.join(data_to_save_dir, "val.json"), 'w') as f:
-        json.dump(val_set, f)
-    with open(os.path.join(data_to_save_dir, "test.json"), 'w') as f:
-        json.dump(test_set, f)
+    # with open(os.path.join(data_to_save_dir, "train.json"), 'w') as f:
+    #     json.dump(train_set, f)
+    # with open(os.path.join(data_to_save_dir, "val.json"), 'w') as f:
+    #     json.dump(val_set, f)
+    # with open(os.path.join(data_to_save_dir, "test.json"), 'w') as f:
+    #     json.dump(test_set, f)
+
+
+# files in raw_data_root_dir should be only data files
+def financial_labelled_sentence_data_split(raw_data_root_dir="./Data/financial_phasebank/FinancialPhraseBank-v1.0/", data_to_save_dir="./Data/financial_phasebank/splitted/"):
+    train_set, val_set, test_set = [], [], []
+    data_files = os.listdir(raw_data_root_dir)
+    ttl_pos_data, ttl_neu_data, ttl_neg_data = [], [], []
+    cnt_pos_data, cnt_neu_data, cnt_neg_data = 0, 0, 0
+    # loading data
+    # Sentences_AllAgree
+    # Sentences_75Agree
+    data_file_full_addr = os.path.join(raw_data_root_dir, "Sentences_AllAgree.txt")
+    with open(data_file_full_addr, 'r', encoding='latin-1') as f:
+        cur_lines = f.readlines()
+        for cur_line in cur_lines:
+            cur_line_splitted = cur_line.strip().split("@")
+            assert len(cur_line_splitted) == 2
+            cur_text, cur_label = cur_line_splitted
+            if cur_label == "positive":
+                if cnt_pos_data < 1000:
+                    ttl_pos_data.append([cur_text, 1])
+                    cnt_pos_data += 1
+            elif cur_label == "neutral":
+                if cnt_neu_data < 1000:
+                    ttl_neu_data.append([cur_text, 0.5])
+                    cnt_neu_data += 1
+            elif cur_label == "negative":
+                if cnt_neg_data < 1000:
+                    ttl_neg_data.append([cur_text, 0])
+                    cnt_neg_data += 1
+            else:
+                raise NotImplementedError("cur_label: ", cur_label)
+            if cnt_pos_data == 1000 and cnt_neu_data == 1000 and cnt_neg_data == 1000:
+                print("cnt_pos_data: ", cnt_pos_data)
+                break
+    print("len(ttl_pos_data): ", len(ttl_pos_data))
+    print("len(ttl_neu_data): ", len(ttl_neu_data))
+    print("len(ttl_neg_data): ", len(ttl_neg_data))
+
+
+    # function: divide data_list to train_data_list, val_data_list, test_data_list
+    def divide_into_3sets(data_list):
+        len_data_list = len(data_list)
+        train_len = int(0.6*len_data_list)
+        val_len = int(0.15*len_data_list)
+        test_len = len_data_list - train_len - val_len
+        train_data_list, val_data_list, test_data_list = [], [], []
+        for cur_id in range(len_data_list):
+            if cur_id < train_len:
+                train_data_list.append([data_list[cur_id][0], data_list[cur_id][1]])
+            elif cur_id < train_len + val_len:
+                val_data_list.append([data_list[cur_id][0], data_list[cur_id][1]])
+            else:
+                test_data_list.append([data_list[cur_id][0], data_list[cur_id][1]])
+        return train_data_list, val_data_list, test_data_list
+
+    pos_train, pos_val, pos_test  = divide_into_3sets(ttl_pos_data)
+    neu_train, neu_val, neu_test = divide_into_3sets(ttl_neu_data)
+    neg_train, neg_val, neg_test = divide_into_3sets(ttl_neg_data)
+
+    train_set = pos_train + neu_train + neg_train
+    val_set = pos_val + neu_val + neg_val
+    test_set = pos_test + neu_test + neg_test
+
+    # function: [[cur_text, label],...] --> [[cur_text, label, index], ...]
+    def add_data_index(data_list):
+        cnt_pos, cnt_neu, cnt_neg = 0, 0, 0
+        for cur_id in range(len(data_list)):
+            cur_lbl = data_list[cur_id][1]
+            if cur_lbl == 1:
+                data_list[cur_id].append(cnt_pos)
+                cnt_pos += 1
+            elif cur_lbl == 0.5:
+                data_list[cur_id].append(cnt_neu)
+                cnt_neu += 1
+            elif cur_lbl == 0:
+                data_list[cur_id].append(cnt_neg)
+                cnt_neg += 1
+            else:
+                raise NotImplementedError
+        return data_list
+
+    train_set = add_data_index(train_set)
+    val_set = add_data_index(val_set)
+    test_set = add_data_index(test_set)
+    # np.random.shuffle(train_set)
+    # np.random.shuffle(val_set)
+    # np.random.shuffle(test_set)
+
+    print("len(train_set): ", len(train_set))
+    print("len(val_set): ", len(val_set))
+    print("len(test_set): ", len(test_set))
+    print("train_set[:10]", train_set[:10])
+
+    # with open(os.path.join(data_to_save_dir, "train.json"), 'w') as f:
+    #     json.dump(train_set, f)
+    # with open(os.path.join(data_to_save_dir, "val.json"), 'w') as f:
+    #     json.dump(val_set, f)
+    # with open(os.path.join(data_to_save_dir, "test.json"), 'w') as f:
+    #     json.dump(test_set, f)
+
+
+def yelp_labelled_sentence_data_split(raw_data_root_dir="", data_to_save_dir=""):
+    dataset = load_dataset("yelp_review_full")
+
+if __name__ == "__main__":
+    # financial_labelled_sentence_data_split()
+    # sentiment_train_subset_obtainer("./Data/financial_phasebank/splitted/")
+    train_set, val_set, test_set = load_sentiment_data(splitted_data_dir="./Data/financial_phasebank/splitted/", if_add_e2Rel=True)
+    get_data_lines_using_sentimentSentence_dataset_for_retriever(train_set, val_set, test_set, splitted_data_dir="./Data/financial_phasebank/splitted/")
