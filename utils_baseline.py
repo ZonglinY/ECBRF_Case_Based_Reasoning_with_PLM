@@ -47,14 +47,30 @@ def load_sentiment_data(splitted_data_dir="./Data/sentiment/splitted/", if_add_e
             for cur_id in range(len(data_set)):
                 assert len(data_set[cur_id]) == 3
                 cur_label = data_set[cur_id][1]
-                if cur_label == 0:
-                    cur_label_text = "negative"
-                elif cur_label == 1:
-                    cur_label_text = "positive"
-                elif cur_label == 0.5:
-                    cur_label_text = "neutral"
+                if "sentiment" in splitted_data_dir or "financial" in splitted_data_dir:
+                    if cur_label == 0:
+                        cur_label_text = "negative"
+                    elif cur_label == 1:
+                        cur_label_text = "positive"
+                    elif cur_label == 0.5:
+                        cur_label_text = "neutral"
+                    else:
+                        raise Exception("cur_label: ", cur_label)
+                elif "yelp" in splitted_data_dir:
+                    if cur_label == 0:
+                        cur_label_text = "0 star"
+                    elif cur_label == 1:
+                        cur_label_text = "1 star"
+                    elif cur_label == 2:
+                        cur_label_text = "2 star"
+                    elif cur_label == 3:
+                        cur_label_text = "3 star"
+                    elif cur_label == 4:
+                        cur_label_text = "4 star"
+                    else:
+                        raise Exception("cur_label: ", cur_label)
                 else:
-                    raise Exception("cur_label: ", cur_label)
+                    raise NotImplementError
                 # as there's no relation
                 data_set[cur_id].insert(1, "")
                 # e2 is the expected generation for classification
@@ -473,15 +489,55 @@ def financial_labelled_sentence_data_split(raw_data_root_dir="./Data/financial_p
     #     json.dump(test_set, f)
 
 
-def yelp_labelled_sentence_data_split(raw_data_root_dir="", data_to_save_dir=""):
+def yelp_labelled_sentence_data_split(raw_data_root_dir="", data_to_save_dir="./Data/yelp/splitted/"):
     dataset = load_dataset("yelp_review_full")
+    # datast: a list of dict
+    # desired_number: how many data to select
+    # start_id: from which data index to select
+    def select_train_test_set(datast, desired_number, start_id):
+        target_set = []
+        cnt_collected = 0
+        for cur_id in range(start_id, len(datast)):
+            cur_txt = datast[cur_id]['text']
+            cur_lbl = datast[cur_id]['label']
+            # to make sure that BART is enough to put it into context
+            if cnt_collected < desired_number:
+                if len(cur_txt.split()) <= 100:
+                    target_set.append([cur_txt, cur_lbl, cnt_collected])
+                    cnt_collected += 1
+            else:
+                break
+        # cur_id acks as a end_id for further usage (e.g. train set for val set)
+        return target_set, cur_id
+    train_set, end_id_train_set = select_train_test_set(dataset['train'], 2000, 0)
+    val_set, _ = select_train_test_set(dataset['train'], 500, end_id_train_set)
+    test_set, _ = select_train_test_set(dataset['test'], 1000, 0)
+
+    print("len(train_set): ", len(train_set))
+    print("len(val_set): ", len(val_set))
+    print("len(test_set): ", len(test_set))
+    print("train_set[:10]", train_set[:10])
+
+    # with open(os.path.join(data_to_save_dir, "train.json"), 'w') as f:
+    #     json.dump(train_set, f)
+    # with open(os.path.join(data_to_save_dir, "val.json"), 'w') as f:
+    #     json.dump(val_set, f)
+    # with open(os.path.join(data_to_save_dir, "test.json"), 'w') as f:
+    #     json.dump(test_set, f)
+    return train_set, val_set, test_set
+
+
 
 if __name__ == "__main__":
     ## split data to train/val/test sets
     # financial_labelled_sentence_data_split()
+    # yelp_labelled_sentence_data_split()
     ## split train/val/test sets to few-shot subsets
     # sentiment_train_subset_obtainer("./Data/financial_phasebank/splitted/")
+    # sentiment_train_subset_obtainer("./Data/yelp/splitted/")
     ## obtain .txt version of train/val/test sets for retrieval
     # train_set, val_set, test_set = load_sentiment_data(splitted_data_dir="./Data/financial_phasebank/splitted/", if_add_e2Rel=True)
     # get_data_lines_using_sentimentSentence_dataset_for_retriever(train_set, val_set, test_set, splitted_data_dir="./Data/financial_phasebank/splitted/")
+    # train_set, val_set, test_set = load_sentiment_data(splitted_data_dir="./Data/yelp/splitted/", if_add_e2Rel=True)
+    # get_data_lines_using_sentimentSentence_dataset_for_retriever(train_set, val_set, test_set, splitted_data_dir="./Data/yelp/splitted/")
     pass

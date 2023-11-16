@@ -81,7 +81,7 @@ class embedding_builder:
             self.get_ori_text_shakespeare()
         elif args.dataset_selection == 3:
             self.get_ori_text_e2e()
-        elif args.dataset_selection == 4 or args.dataset_selection == 5:
+        elif args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
             self.get_ori_text_sentiment()
 
         self.tensor_datasets = self.wait_and_get_tensor_datasets()
@@ -189,6 +189,8 @@ class embedding_builder:
                 self.times_more_num_cases_to_retrieve *= 2
             elif self.args.dataset_selection == 5:
                 self.times_more_num_cases_to_retrieve *= 36
+            elif self.args.dataset_selection == 6:
+                self.times_more_num_cases_to_retrieve *= 10
             if self.args.use_only_sub_rel_for_retrieval:
                 self.times_more_num_cases_to_retrieve *= 3
             # newly added 2023/03/14; since with less num_cases, times_more_num_cases_to_retrieve might not be enough
@@ -567,6 +569,8 @@ class embedding_builder:
             data_dir = "./Data/sentiment/splitted/"
         elif self.args.dataset_selection == 5:
             data_dir = "./Data/financial_phasebank/splitted/"
+        elif self.args.dataset_selection == 6:
+            data_dir = "./Data/yelp/splitted/"
         else:
             raise NotImplementError
         with open(self.train_data_dir, 'r') as f:
@@ -756,7 +760,7 @@ class embedding_builder:
                 # id_with_different_relation is used when train set do not contain any case with same relation
                 id_with_different_relation = []
                 # when use classification dataset, we might want the label of retrieved cases to be evenly distributed (without it, sentiment dataset also works well, so not include dataset_selection == 4)
-                if self.args.dataset_selection == 5:
+                if self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
                     label_of_collected_cases = []
                 cur_query = ttl_cur_tuple_with_bundle_order[id_bundle].strip('\n').split('\t')[1]
                 cur_rel = ttl_cur_tuple_with_bundle_order[id_bundle].strip('\n').split('\t')[0]
@@ -794,7 +798,7 @@ class embedding_builder:
                             print('cur_rel: ', ttl_cur_tuple_with_bundle_order[id_bundle].strip('\n').split('\t'))
                             raise Exception("tmp_rel != cur_rel")
                     if tmp_source.strip() != cur_query.strip():
-                        if self.args.dataset_selection == 5:
+                        if self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
                             # print("tmp_obj: ", tmp_obj)
                             if tmp_obj not in label_of_collected_cases:
                                 label_of_collected_cases.append(tmp_obj)
@@ -956,7 +960,7 @@ class embedding_builder:
             print("--- Finish MIPS step 1: %s seconds ---" % (start_time_step1 - start_time))
         # only to get the retrieval_index_id for sentiment sentence dataset (so to get the case difference feature)
         # if self.args.dataset_selection == 4 and data_type != "train":
-        if self.args.dataset_selection == 4 or self.args.dataset_selection == 5:
+        if self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
             torch.save(idx_for_ttl_similar_cases_for_bundle, os.path.join(self.args.output_dir, "retrieved_ids_sentiment_sentence_classification_{}_{}.pt".format(data_type, counter_while_loop)))
         idx_for_ttl_similar_cases_for_bundle, prob_for_ttl_similar_cases_for_bundle, ttl_similar_cases_with_bundle_order, ttl_cur_tuple_with_bundle_order = self.rerank(idx_for_ttl_similar_cases_for_bundle, prob_for_ttl_similar_cases_for_bundle, ttl_similar_cases_with_bundle_order, ttl_cur_tuple_with_bundle_order, obj_line_id_bundleOrder, data_type)
         if counter_while_loop == 0:
@@ -1222,7 +1226,7 @@ class embedding_builder:
                 for id_emb in range(len(batch_line_id)):
                     ttl_similar_cases.append('\n')
                 print("INFO: obj_rel not found in sample_ckb_dict, obj_rel: ", obj_rel.item(), 'sample_ckb_dict.keys(): ', sample_ckb_dict.keys())
-                if self.args.dataset_selection == 1 or self.args.dataset_selection == 2 or self.args.dataset_selection == 3 or self.args.dataset_selection == 4 or self.args.dataset_selection == 5:
+                if self.args.dataset_selection == 1 or self.args.dataset_selection == 2 or self.args.dataset_selection == 3 or self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
                     # suppose we can always find cases with same relation in memory store
                     raise Exception("obj_rel not found in sample_ckb_dict")
                 elif self.args.dataset_selection == 0:
@@ -1345,7 +1349,7 @@ class embedding_builder:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
                 elif self.args.dataset_selection == 3:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
-                elif self.args.dataset_selection == 4 or self.args.dataset_selection == 5:
+                elif self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
 
                 # count for analysis
@@ -1519,7 +1523,7 @@ class embedding_builder:
                 for id_emb in range(len(batch_line_id)):
                     ttl_similar_cases.append('\n')
                 print("INFO: obj_rel not found in sample_ckb_dict, obj_rel: ", obj_rel.item(), 'sample_ckb_dict.keys(): ', sample_ckb_dict.keys())
-                if self.args.dataset_selection == 1 or self.args.dataset_selection == 2 or self.args.dataset_selection == 3 or self.args.dataset_selection == 4 or self.args.dataset_selection == 5:
+                if self.args.dataset_selection == 1 or self.args.dataset_selection == 2 or self.args.dataset_selection == 3 or self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
                     # suppose we can always find cases with same relation in memory store
                     raise Exception("obj_rel not found in sample_ckb_dict")
                 elif self.args.dataset_selection == 0:
@@ -1637,7 +1641,7 @@ class embedding_builder:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
                 elif self.args.dataset_selection == 3:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
-                elif self.args.dataset_selection == 4 or self.args.dataset_selection == 5:
+                elif self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
 
                 # count for analysis
@@ -2246,6 +2250,9 @@ def main():
     if args.dataset_selection == 5:
         # financial dataset has three labels, make sure that there's examples from each of the labels
         assert args.num_cases >= 3
+    elif args.dataset_selection == 6:
+        # yelp dataset has five labels, make sure that there's examples from each of the labels
+        assert args.num_cases >= 5
     # change args according to args.dataset
     if args.dataset_selection == 0:
         args.train_dataset = ["./Data/conceptnet/train100k_CN_sorted.txt"]
@@ -2299,6 +2306,15 @@ def main():
         args.max_r = 2
         args.max_e2 = 5
         args.max_additional_cases = 411
+        assert args.subset_selection >= -1 and args.subset_selection <= 3
+    elif args.dataset_selection == 6:
+        args.train_dataset = ["./Data/yelp/splitted/train_lines.txt"]
+        args.eval_dataset = ["./Data/yelp/splitted/eval_lines.txt"]
+        args.test_dataset = ["./Data/yelp/splitted/test_lines.txt"]
+        args.max_e1 = 130
+        args.max_r = 2
+        args.max_e2 = 5
+        args.max_additional_cases = 700
         assert args.subset_selection >= -1 and args.subset_selection <= 3
     else:
         raise Exception("Not supported dataset_selection")

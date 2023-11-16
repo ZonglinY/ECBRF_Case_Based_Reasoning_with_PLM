@@ -2490,11 +2490,13 @@ def find_path_tensor_dataset(args):
                 path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_e2e_specialTokenSplit.pt")
             else:
                 path_tensor_datasets = os.path.join(args.dataStore_dir, "ECBRF_shared_data_for_reuse/", "tensor_datasets_e2e.pt")
-    elif args.dataset_selection == 4 or args.dataset_selection == 5:
+    elif args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
         if args.dataset_selection == 4:
             dataset_abrev_name = "sentiment"
         elif args.dataset_selection == 5:
             dataset_abrev_name = "financial"
+        elif args.dataset_selection == 6:
+            dataset_abrev_name = "yelp"
         else:
             raise NotImplementError
         if args.use_obj_for_retrieval:
@@ -2570,6 +2572,11 @@ def find_path_sample_ckb_dict(args, use_only_sub_rel_for_retrieval=False):
             path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_financial.pt')
         else:
             path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_financial.pt')
+    elif args.dataset_selection == 6:
+        if args.use_only_sub_rel_for_retrieval or use_only_sub_rel_for_retrieval:
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_use_only_sub_rel_for_retrieval_yelp.pt')
+        else:
+            path_sample_ckb_dict = os.path.join(args.dataStore_dir, 'ECBRF_shared_data_for_reuse/', 'sample_ckb_dict_dpr_for_bothFro_retriever_yelp.pt')
     if args.retriever_model_type != "dpr":
         path_sample_ckb_dict = path_sample_ckb_dict.split('.')
         assert len(path_sample_ckb_dict) == 2

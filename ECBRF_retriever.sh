@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH -J cbr1_retr
+#SBATCH -J nrm1_retr
 #SBATCH -N 1
 #SBATCH -n 1
 #SBATCH --partition=DGXq
-#SBATCH -w node19
+#SBATCH -w node18
 #SBATCH --gres=gpu:1
-#SBATCH --output /export/home/zonglin001/Out/financial_bart_cbr_subset1_bs16_Seed106_retr.out
+#SBATCH --output /export/home/zonglin001/Out/yelp_bart_cbr_noRandMask_subset1_bs16_Seed106_retr.out
 
 ## with frozen retriever
 # num_steps has no use for now
@@ -16,13 +16,13 @@ python -u ./comet-atomic-index-builder-v6-twoEmbedder-DPR-faster-May-TST.py  \
         --train_batch_size 32 --eval_batch_size 32 \
         --simi_batch_size 2 \
         --generator_model_type bart-base --retriever_model_type dpr \
-        --n_doc 1 --num_cases 3 \
+        --n_doc 1 --num_cases 5 \
         --sample_size 200000 --if_only_embed_ckb_once \
         --rerank_selection 1 \
         --use_special_tokens_to_split_retrieved_cases --if_not_adding_special_relation_tokens \
         --dataStore_dir /export/home/zonglin001/Checkpoints/ \
-        --output_dir /export/home/zonglin001/Checkpoints/financial_bart_cbr_subset1_bs16_Seed106/     \
-        --dataset_selection 5 --subset_selection 1 \
+        --output_dir /export/home/zonglin001/Checkpoints/yelp_bart_cbr_noRandMask_subset1_bs16_Seed106/     \
+        --dataset_selection 6 --subset_selection 1 \
         --if_use_nshot_data --num_sample 1 \
         --if_reverse_order_demonstrations \
         # --random_retrieval \
