@@ -2,8 +2,8 @@
 #SBATCH -J cmt0_gene
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --partition=DGXq
-#SBATCH -w node21
+#SBATCH --partition=PV1003q
+#SBATCH -w node16
 #SBATCH --gres=gpu:1
 #SBATCH --output /export/home/zonglin001/Out/financial_bart_comet_subset0_bs16_Seed106_gene.out
 
@@ -26,7 +26,7 @@ python -u ./comet-case-based-train-updating-retriever-twoEmbedder-DPR-faster-May
         --dataset_selection 5 --subset_selection 0 \
         --if_use_nshot_data --num_sample 1  \
         --if_comet_baseline \
-        # --if_randomly_mask_demonstrations --prob_randomly_mask_demonstrations 0.000 \
+        # --if_randomly_mask_demonstrations --prob_randomly_mask_demonstrations 0.300 \
 
         # --if_only_use_retrieved_target \
 

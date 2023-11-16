@@ -1,5 +1,5 @@
 import argparse, logging, os, sys, random, datetime, math, time, shutil, copy
-os.environ["CUDA_VISIBLE_DEVICES"]="6,7"
+os.environ["CUDA_VISIBLE_DEVICES"]="2"
 import numpy as np
 import torch
 import torch.nn as nn

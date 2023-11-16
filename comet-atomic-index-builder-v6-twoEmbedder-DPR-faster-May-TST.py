@@ -122,9 +122,9 @@ class embedding_builder:
         self.batch_eval_embed_dir = os.path.join(output_dir, 'batch_eval_embed.pt')
         # Q: not used yet
         self.batch_test_embed_dir = os.path.join(output_dir, 'batch_test_embed.pt')
-        self.bundle_train_cases_dir = os.path.join(output_dir, 'bundle_train_cases.txt')
-        self.bundle_eval_cases_dir = os.path.join(output_dir, 'bundle_eval_cases.txt')
-        self.bundle_test_cases_dir = os.path.join(output_dir, 'bundle_test_cases.txt')
+        self.bundle_train_cases_dir = os.path.join(output_dir, 'bundle_train_cases.pt')
+        self.bundle_eval_cases_dir = os.path.join(output_dir, 'bundle_eval_cases.pt')
+        self.bundle_test_cases_dir = os.path.join(output_dir, 'bundle_test_cases.pt')
         # for debug
         self.batch_rel_dir = os.path.join(output_dir, 'batch_rel.pt')
         # to interact with generator
@@ -187,6 +187,8 @@ class embedding_builder:
                 self.times_more_num_cases_to_retrieve *= 24
             elif self.args.dataset_selection == 3:
                 self.times_more_num_cases_to_retrieve *= 2
+            elif self.args.dataset_selection == 5:
+                self.times_more_num_cases_to_retrieve *= 36
             if self.args.use_only_sub_rel_for_retrieval:
                 self.times_more_num_cases_to_retrieve *= 3
             # newly added 2023/03/14; since with less num_cases, times_more_num_cases_to_retrieve might not be enough
@@ -753,6 +755,9 @@ class embedding_builder:
                 dict_retrieved_cases_source = {}
                 # id_with_different_relation is used when train set do not contain any case with same relation
                 id_with_different_relation = []
+                # when use classification dataset, we might want the label of retrieved cases to be evenly distributed (without it, sentiment dataset also works well, so not include dataset_selection == 4)
+                if self.args.dataset_selection == 5:
+                    label_of_collected_cases = []
                 cur_query = ttl_cur_tuple_with_bundle_order[id_bundle].strip('\n').split('\t')[1]
                 cur_rel = ttl_cur_tuple_with_bundle_order[id_bundle].strip('\n').split('\t')[0]
                 tmp_ttl_cases = ttl_similar_cases_with_bundle_order[id_bundle].strip('\n').split('\t\t')
@@ -776,6 +781,7 @@ class embedding_builder:
                     tmp_ttl_cases[id_case] = tmp_ttl_cases[id_case].strip('\n')
                     tmp_source = tmp_ttl_cases[id_case].split('\t')[1]
                     tmp_rel = tmp_ttl_cases[id_case].split('\t')[0]
+                    tmp_obj = tmp_ttl_cases[id_case].split('\t')[2]
                     # Only when dataset is conceptnet, tmp_rel != cur_rel is allowed;
                     # But we do not use case whose rel != cur_rel in rerank1 and rerank2
                     if tmp_rel != cur_rel:
@@ -788,6 +794,12 @@ class embedding_builder:
                             print('cur_rel: ', ttl_cur_tuple_with_bundle_order[id_bundle].strip('\n').split('\t'))
                             raise Exception("tmp_rel != cur_rel")
                     if tmp_source.strip() != cur_query.strip():
+                        if self.args.dataset_selection == 5:
+                            # print("tmp_obj: ", tmp_obj)
+                            if tmp_obj not in label_of_collected_cases:
+                                label_of_collected_cases.append(tmp_obj)
+                            else:
+                                continue
                         if not self.args.use_only_sub_rel_for_retrieval:
                             # old method 8/17/2021: 11.54 p.m.
                             id_with_different_source.append(id_case)
@@ -808,9 +820,8 @@ class embedding_builder:
                     try:
                         assert len(id_with_different_source) >= num_cases
                     except:
-                        print("len(id_with_different_source): ", len(id_with_different_source))
-                        print("num_cases: ", num_cases)
-                        raise Exception
+                        print("label_of_collected_cases: ", label_of_collected_cases)
+                        raise Exception("Retrieved cases have a less number than requirement. Requirememt: {}; Retrieved: {}".format(num_cases, len(id_with_different_source)))
                 else:
                     # if len(id_with_different_source) == self.args.num_cases and len(id_with_different_relation) == 0:
                     if len(id_with_different_source) >= self.args.num_cases and len(id_with_different_relation) == 0:
@@ -1231,6 +1242,8 @@ class embedding_builder:
             # use 26 instead of 25
             # num_cases_tmp
             num_cases_tmp = np.minimum(num_cases*self.times_more_num_cases_to_retrieve+1, similarity.size()[1])
+            # print("similarity.size()[1]: ", similarity.size()[1])
+            # print("num_cases_tmp: ", num_cases_tmp)
             # The number of cases we need to use in this function is inflated_num_cases
             # (in rerank function, we will only select num_cases cases to use)
             inflated_num_cases = num_cases*self.times_more_num_cases_to_retrieve
@@ -1379,8 +1392,9 @@ class embedding_builder:
             ttl_similar_cases_with_bundle_order.append(ttl_similar_cases[ori_id])
             ttl_cur_tuple_with_bundle_order.append(ttl_cur_tuple[ori_id])
 
-        with open(save_dir, 'w') as f:
-            f.writelines(ttl_similar_cases_with_bundle_order)
+        # with open(save_dir, 'w') as f:
+        #     f.writelines(ttl_similar_cases_with_bundle_order)
+        torch.save(ttl_similar_cases_with_bundle_order, save_dir)
         # time6 = time.time()
         # print("time6 - time5: ", time6-time5)
 
@@ -2196,7 +2210,7 @@ def main():
     parser.add_argument("--n_doc", type=int, default=3)
     parser.add_argument("--simi_batch_size", type=int, default=64)
     parser.add_argument("--sample_size", type=int, default=20000)
-    parser.add_argument("--num_steps", type=int, default=500)
+    parser.add_argument("--num_steps", type=int, default=600)
     parser.add_argument("--use_obj_for_retrieval", action="store_true", help="if using obj for retrieval (get embedding and similarity score)")
     parser.add_argument("--use_only_sub_rel_for_retrieval", action="store_true", help="if only using sub for retrieval (get embedding and similarity score)")
     parser.add_argument("--if_only_embed_ckb_once", action="store_true", help="if use frozen retriever")
@@ -2229,6 +2243,9 @@ def main():
         assert args.subset_selection_while_use_full_memory_store == -1
     if args.if_use_full_memory_store_while_subset:
         assert args.subset_selection_while_use_full_memory_store != -1
+    if args.dataset_selection == 5:
+        # financial dataset has three labels, make sure that there's examples from each of the labels
+        assert args.num_cases >= 3
     # change args according to args.dataset
     if args.dataset_selection == 0:
         args.train_dataset = ["./Data/conceptnet/train100k_CN_sorted.txt"]

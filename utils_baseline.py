@@ -449,20 +449,8 @@ def financial_labelled_sentence_data_split(raw_data_root_dir="./Data/financial_p
 
     # function: [[cur_text, label],...] --> [[cur_text, label, index], ...]
     def add_data_index(data_list):
-        cnt_pos, cnt_neu, cnt_neg = 0, 0, 0
         for cur_id in range(len(data_list)):
-            cur_lbl = data_list[cur_id][1]
-            if cur_lbl == 1:
-                data_list[cur_id].append(cnt_pos)
-                cnt_pos += 1
-            elif cur_lbl == 0.5:
-                data_list[cur_id].append(cnt_neu)
-                cnt_neu += 1
-            elif cur_lbl == 0:
-                data_list[cur_id].append(cnt_neg)
-                cnt_neg += 1
-            else:
-                raise NotImplementedError
+            data_list[cur_id].append(cur_id)
         return data_list
 
     train_set = add_data_index(train_set)
@@ -489,7 +477,11 @@ def yelp_labelled_sentence_data_split(raw_data_root_dir="", data_to_save_dir="")
     dataset = load_dataset("yelp_review_full")
 
 if __name__ == "__main__":
+    ## split data to train/val/test sets
     # financial_labelled_sentence_data_split()
+    ## split train/val/test sets to few-shot subsets
     # sentiment_train_subset_obtainer("./Data/financial_phasebank/splitted/")
-    train_set, val_set, test_set = load_sentiment_data(splitted_data_dir="./Data/financial_phasebank/splitted/", if_add_e2Rel=True)
-    get_data_lines_using_sentimentSentence_dataset_for_retriever(train_set, val_set, test_set, splitted_data_dir="./Data/financial_phasebank/splitted/")
+    ## obtain .txt version of train/val/test sets for retrieval
+    # train_set, val_set, test_set = load_sentiment_data(splitted_data_dir="./Data/financial_phasebank/splitted/", if_add_e2Rel=True)
+    # get_data_lines_using_sentimentSentence_dataset_for_retriever(train_set, val_set, test_set, splitted_data_dir="./Data/financial_phasebank/splitted/")
+    pass
