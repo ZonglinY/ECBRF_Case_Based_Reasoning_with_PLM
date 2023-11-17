@@ -1,5 +1,5 @@
 import argparse, logging, os, sys, random, datetime, math, time, shutil, copy
-os.environ["CUDA_VISIBLE_DEVICES"]="6,7"
+os.environ["CUDA_VISIBLE_DEVICES"]="2,3"
 import numpy as np
 import torch
 import torch.nn as nn
@@ -215,7 +215,7 @@ def batch_step(args, model_generator, model_retriever, model_retriever_doc, batc
     loss = (1.0 - epsilon) * nll_loss + eps_i * smooth_loss
     # seq_logprobs_backup: [batch_size, n_doc, seq_length, len_words]
     # calculate accuracy when the dataset is "sentiment sentence classification" dataset
-    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
         # print("seq_logprobs_backup.size(): ", seq_logprobs_backup.size())
         cur_batch_size = seq_logprobs_backup.size()[0]
         ## true label
@@ -245,7 +245,7 @@ def batch_step(args, model_generator, model_retriever, model_retriever_doc, batc
                 prob_4_pred = torch.exp(seq_logprobs_backup[cur_data_id, 0, 1, 306])
             else:
                 raise NotImplementedError
-            if args.dataset_selection == 4:
+            if args.dataset_selection == 4 or args.dataset_selection == 7:
                 if not (cur_true_label == 'positive' or cur_true_label == 'negative'):
                     raise Exception("Not acceptable cur_true_label: {}, it should either be positive or negative.".format(cur_true_label))
                 if (prob_positive_pred >= prob_negative_pred and cur_true_label == 'positive') or (prob_positive_pred < prob_negative_pred and cur_true_label == 'negative'):
@@ -339,7 +339,7 @@ def batch_step_fast_train_1GPU(args, model_generator, model_retriever, model_ret
     loss = (1.0 - epsilon) * nll_loss_device2 + eps_i * smooth_loss
     # seq_logprobs: [batch_size, n_doc, seq_length, len_words]
     # calculate accuracy when the dataset is "sentiment sentence classification" dataset
-    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
         # print("seq_logprobs.size(): ", seq_logprobs.size())
         cur_batch_size = seq_logprobs.size()[0]
         ## true label
@@ -369,7 +369,7 @@ def batch_step_fast_train_1GPU(args, model_generator, model_retriever, model_ret
                 prob_4_pred = torch.exp(seq_logprobs[cur_data_id, 0, 1, 306])
             else:
                 raise NotImplementedError
-            if args.dataset_selection == 4:
+            if args.dataset_selection == 4 or args.dataset_selection == 7:
                 if not (cur_true_label == 'positive' or cur_true_label == 'negative'):
                     raise Exception("Not acceptable cur_true_label: {}, it should either be positive or negative.".format(cur_true_label))
                 if (prob_positive_pred >= prob_negative_pred and cur_true_label == 'positive') or (prob_positive_pred < prob_negative_pred and cur_true_label == 'negative'):
@@ -464,7 +464,7 @@ def batch_step_eval_analysis(args, model_generator, model_retriever, model_retri
     seq_logprobs = F.log_softmax(seq_logits, dim=-1).view(seq_logits.shape[0] // args.n_doc, args.n_doc, -1, seq_logits.shape[-1])
     # seq_logprobs: [batch_size, n_doc, seq_length, len_words]
     # calculate accuracy when the dataset is "sentiment sentence classification" dataset
-    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
         # print("seq_logprobs.size(): ", seq_logprobs.size())
         cur_batch_size = seq_logprobs.size()[0]
         ## true label
@@ -494,7 +494,7 @@ def batch_step_eval_analysis(args, model_generator, model_retriever, model_retri
                 prob_4_pred = torch.exp(seq_logprobs[cur_data_id, 0, 1, 306])
             else:
                 raise NotImplementedError
-            if args.dataset_selection == 4:
+            if args.dataset_selection == 4 or args.dataset_selection == 7:
                 if not (cur_true_label == 'positive' or cur_true_label == 'negative'):
                     raise Exception("Not acceptable cur_true_label: {}, it should either be positive or negative.".format(cur_true_label))
                 if (prob_positive_pred >= prob_negative_pred and cur_true_label == 'positive') or (prob_positive_pred < prob_negative_pred and cur_true_label == 'negative'):
@@ -558,7 +558,7 @@ def batch_step_eval(args, model_generator, batch, tokenizer_gene):
     seq_logprobs = F.log_softmax(seq_logits, dim=-1).view(seq_logits.shape[0] // args.n_doc, args.n_doc, -1, seq_logits.shape[-1])
     # seq_logprobs: [batch_size, n_doc, seq_length, len_words]
     # calculate accuracy when the dataset is "sentiment sentence classification" dataset
-    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
         # print("seq_logprobs.size(): ", seq_logprobs.size())
         cur_batch_size = seq_logprobs.size()[0]
         ## true label
@@ -588,7 +588,7 @@ def batch_step_eval(args, model_generator, batch, tokenizer_gene):
                 prob_4_pred = torch.exp(seq_logprobs[cur_data_id, 0, 1, 306])
             else:
                 raise NotImplementedError
-            if args.dataset_selection == 4:
+            if args.dataset_selection == 4 or args.dataset_selection == 7:
                 if not (cur_true_label == 'positive' or cur_true_label == 'negative'):
                     raise Exception("Not acceptable cur_true_label: {}, it should either be positive or negative.".format(cur_true_label))
                 if (prob_positive_pred >= prob_negative_pred and cur_true_label == 'positive') or (prob_positive_pred < prob_negative_pred and cur_true_label == 'negative'):
@@ -641,7 +641,7 @@ def evaluate(args, model_generator, model_retriever, model_retriever_doc, tokeni
     eval_loss = 0
     nb_eval_steps = 0
     num_displays = 1
-    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
         eval_ttl_cnt_correct = 0
     if if_eval_analysis:
         # Embed_docs, Embed_cur_query = None, None
@@ -766,7 +766,7 @@ def evaluate(args, model_generator, model_retriever, model_retriever_doc, tokeni
                 eval_loss += loss * batch_size
                 # eval_loss += loss
                 nb_eval_steps += batch_size
-                if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+                if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
                     eval_ttl_cnt_correct += batch_accuracy * batch_size
                 # print('batch_size:{}, loss:{}, eval_loss:{}, nb_eval_steps:{}'.format(batch_size, loss, eval_loss, nb_eval_steps))
                 # print some examples
@@ -798,7 +798,7 @@ def evaluate(args, model_generator, model_retriever, model_retriever_doc, tokeni
                     print("output:", output)
         cur_bundle = next_bundle
     eval_loss = eval_loss / nb_eval_steps
-    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+    if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
         eval_accuracy = eval_ttl_cnt_correct / nb_eval_steps
         print('eval_loss:{}, {}_accuracy: {}, nb_eval_steps:{}'.format(eval_loss, data_type, eval_accuracy, nb_eval_steps))
     else:
@@ -868,7 +868,7 @@ def main():
     # parser.add_argument("--test_cases_dir", type=str, nargs="+", default=["/home/zy223/CBR/pytorch-transformers-comet/examples/conceptnet_cases/test_cases.txt"])
     parser.add_argument("--if_without_case", action="store_true", help="Filter all cases as '', to compare the effect of cases")
     # dataset_selection: 0: conceptnet 1: atomic 2: Shakespeare text style transfer
-    # 3: e2e (table2text) 4: sentiment sentence classification dataset; 5: financial phase bank dataset; 6: yelp review
+    # 3: e2e (table2text) 4: sentiment sentence classification dataset; 5: financial phase bank dataset; 6: yelp review; 7: twitter review
     parser.add_argument("--dataset_selection", type=int, default=0)
     parser.add_argument("--n_doc", type=int, default=3)
     parser.add_argument("--num_btch_in_bundle", type=int, default=500)
@@ -1067,6 +1067,27 @@ def main():
             raise NotImplementedError
         # yelp dataset has three labels, make sure that there's examples from each of the labels
         assert args.num_cases_per_query >= 5
+    elif args.dataset_selection == 7:
+        args.max_e1 = 110
+        args.max_r = 2
+        args.max_e2 = 5
+        args.max_additional_cases = 480
+        args.num_train_epochs = 5000
+        args.root_data_dir = "./Data/twitter/splitted/"
+        args.if_without_none = False
+        assert args.subset_selection >= -1 and args.subset_selection <= 3
+        if args.subset_selection == 3:
+            args.eval_per_steps = 20
+        elif args.subset_selection == 0:
+            args.eval_per_steps = 50
+        elif args.subset_selection == 1:
+            args.eval_per_steps = 150
+        elif args.subset_selection == 2:
+            args.eval_per_steps = 350
+        elif args.subset_selection == -1:
+            args.eval_per_steps = 500
+        else:
+            raise NotImplementedError
     else:
         raise Exception("Not supported dataset_selection")
 
@@ -1340,7 +1361,7 @@ def main():
                     eval_datasets = [pickle.load(f)]
                 with open(test_dataset_dir, 'rb') as f:
                     test_datasets = [pickle.load(f)]
-        elif args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+        elif args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
             if args.subset_selection == -1:
                 train_datasets, eval_datasets, test_datasets = load_sentiment_data(splitted_data_dir=args.root_data_dir, if_add_e2Rel=True)
             else:
@@ -1516,7 +1537,7 @@ def main():
         global_steps, ttl_batch_steps = 0, -1
         tr_loss, logging_loss = 0.0, 0.0
         tr_nll_loss, logging_nll_loss = 0.0, 0.0
-        if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+        if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
             best_accuracy = 0
         elif args.dataset_selection == 0 or args.dataset_selection == 1 or args.dataset_selection == 2 or args.dataset_selection == 3:
             best_loss = 1e10
@@ -1694,7 +1715,7 @@ def main():
                             print("Step", global_steps, "Training Loss:", loss, "Nll Loss:", nll_loss, "Smooth loss:", loss-nll_loss, "ppl:", PPL, "batch accuracy: ", batch_accuracy)
                             writer.add_scalar('Train Loss', loss, global_step=global_steps)
                             writer.add_scalar('Train PPL', PPL, global_step=global_steps)
-                            if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+                            if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
                                 writer.add_scalar('Train Accuracy', batch_accuracy, global_step=global_steps)
                             logging_loss = tr_loss
                             logging_nll_loss = tr_nll_loss
@@ -1711,10 +1732,10 @@ def main():
                             print("\n\nevaluating\neval loss:", eval_loss, "ppl", np.exp(eval_loss) if eval_loss < 300 else np.inf)
                             writer.add_scalar('Val Loss', eval_loss, global_step=global_steps)
                             writer.add_scalar('Val PPL', np.exp(eval_loss), global_step=global_steps)
-                            if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+                            if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
                                 writer.add_scalar('Val Accuracy', eval_accuracy, global_step=global_steps)
                             # decide to save; the criteria depends on whether the task is a classification task or generation task
-                            if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+                            if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
                                 whether_best_loss = True if eval_accuracy > best_accuracy else False
                             elif args.dataset_selection == 0 or args.dataset_selection == 1 or args.dataset_selection == 2 or args.dataset_selection == 3:
                                 whether_best_loss = True if eval_loss < best_loss else False
@@ -1729,7 +1750,7 @@ def main():
                                 print("model saved at step", global_steps)
                                 print(str(datetime.datetime.now()))
                                 patience = args.patience
-                                if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+                                if args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
                                     print("prev accuracy:", best_accuracy, "cur loss:", eval_accuracy)
                                     best_accuracy = eval_accuracy
                                 elif args.dataset_selection == 0 or args.dataset_selection == 1 or args.dataset_selection == 2 or args.dataset_selection == 3:

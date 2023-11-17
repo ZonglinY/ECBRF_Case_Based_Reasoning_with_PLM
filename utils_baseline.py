@@ -1,4 +1,4 @@
-import os, copy
+import os, copy, math
 import numpy as np
 import json
 import torch
@@ -47,7 +47,7 @@ def load_sentiment_data(splitted_data_dir="./Data/sentiment/splitted/", if_add_e
             for cur_id in range(len(data_set)):
                 assert len(data_set[cur_id]) == 3
                 cur_label = data_set[cur_id][1]
-                if "sentiment" in splitted_data_dir or "financial" in splitted_data_dir:
+                if "sentiment" in splitted_data_dir or "financial" in splitted_data_dir or "twitter" in splitted_data_dir:
                     if cur_label == 0:
                         cur_label_text = "negative"
                     elif cur_label == 1:
@@ -527,17 +527,63 @@ def yelp_labelled_sentence_data_split(raw_data_root_dir="", data_to_save_dir="./
     return train_set, val_set, test_set
 
 
+def twitter_labelled_sentence_data_split(raw_data_root_dir="", data_to_save_dir="./Data/twitter/splitted/"):
+    dataset = load_dataset("carblacac/twitter-sentiment-analysis")
+    def select_train_test_set(datast, desired_number, start_id):
+        target_set = []
+        cnt_collected = 0
+        cnt_positive, cnt_negative = 0, 0
+        for cur_id in range(start_id, len(datast)):
+            cur_txt = datast[cur_id]['text']
+            cur_lbl = datast[cur_id]['feeling']
+            # to make sure that BART is enough to put it into context
+            if cnt_collected < desired_number:
+                if len(cur_txt.split()) <= 100:
+                    # half-half for positive-negative data
+                    if (cur_lbl == 1 and cnt_positive <= math.ceil(desired_number/2)) or (cur_lbl == 0 and cnt_negative <= math.ceil(desired_number/2)):
+                        target_set.append([cur_txt, cur_lbl, cnt_collected])
+                        cnt_collected += 1
+                        if cur_lbl == 1:
+                            cnt_positive += 1
+                        elif cur_lbl == 0:
+                            cnt_negative += 1
+                        else:
+                            raise Exception
+            else:
+                break
+        # cur_id acks as a end_id for further usage (e.g. train set for val set)
+        print("cnt_positive: {}; cnt_negative: {}".format(cnt_positive, cnt_negative))
+        return target_set, cur_id
+    train_set, end_id_train_set = select_train_test_set(dataset['train'], 2000, 0)
+    val_set, _ = select_train_test_set(dataset['validation'], 500, 0)
+    test_set, _ = select_train_test_set(dataset['test'], 1000, 0)
+    print("len(train_set): ", len(train_set))
+    print("len(val_set): ", len(val_set))
+    print("len(test_set): ", len(test_set))
+    print("train_set[:10]", train_set[:10])
+    with open(os.path.join(data_to_save_dir, "train.json"), 'w') as f:
+        json.dump(train_set, f)
+    with open(os.path.join(data_to_save_dir, "val.json"), 'w') as f:
+        json.dump(val_set, f)
+    with open(os.path.join(data_to_save_dir, "test.json"), 'w') as f:
+        json.dump(test_set, f)
+    return train_set, val_set, test_set
+
 
 if __name__ == "__main__":
     ## split data to train/val/test sets
     # financial_labelled_sentence_data_split()
     # yelp_labelled_sentence_data_split()
+    # twitter_labelled_sentence_data_split()
     ## split train/val/test sets to few-shot subsets
     # sentiment_train_subset_obtainer("./Data/financial_phasebank/splitted/")
     # sentiment_train_subset_obtainer("./Data/yelp/splitted/")
+    # sentiment_train_subset_obtainer("./Data/twitter/splitted/")
     ## obtain .txt version of train/val/test sets for retrieval
     # train_set, val_set, test_set = load_sentiment_data(splitted_data_dir="./Data/financial_phasebank/splitted/", if_add_e2Rel=True)
     # get_data_lines_using_sentimentSentence_dataset_for_retriever(train_set, val_set, test_set, splitted_data_dir="./Data/financial_phasebank/splitted/")
     # train_set, val_set, test_set = load_sentiment_data(splitted_data_dir="./Data/yelp/splitted/", if_add_e2Rel=True)
     # get_data_lines_using_sentimentSentence_dataset_for_retriever(train_set, val_set, test_set, splitted_data_dir="./Data/yelp/splitted/")
+    # train_set, val_set, test_set = load_sentiment_data(splitted_data_dir="./Data/twitter/splitted/", if_add_e2Rel=True)
+    # get_data_lines_using_sentimentSentence_dataset_for_retriever(train_set, val_set, test_set, splitted_data_dir="./Data/twitter/splitted/")
     pass

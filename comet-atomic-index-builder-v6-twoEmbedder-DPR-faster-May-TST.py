@@ -81,7 +81,7 @@ class embedding_builder:
             self.get_ori_text_shakespeare()
         elif args.dataset_selection == 3:
             self.get_ori_text_e2e()
-        elif args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6:
+        elif args.dataset_selection == 4 or args.dataset_selection == 5 or args.dataset_selection == 6 or args.dataset_selection == 7:
             self.get_ori_text_sentiment()
 
         self.tensor_datasets = self.wait_and_get_tensor_datasets()
@@ -571,6 +571,8 @@ class embedding_builder:
             data_dir = "./Data/financial_phasebank/splitted/"
         elif self.args.dataset_selection == 6:
             data_dir = "./Data/yelp/splitted/"
+        elif self.args.dataset_selection == 7:
+            data_dir = "./Data/twitter/splitted/"
         else:
             raise NotImplementError
         with open(self.train_data_dir, 'r') as f:
@@ -960,7 +962,7 @@ class embedding_builder:
             print("--- Finish MIPS step 1: %s seconds ---" % (start_time_step1 - start_time))
         # only to get the retrieval_index_id for sentiment sentence dataset (so to get the case difference feature)
         # if self.args.dataset_selection == 4 and data_type != "train":
-        if self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
+        if self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6 or self.args.dataset_selection == 7:
             torch.save(idx_for_ttl_similar_cases_for_bundle, os.path.join(self.args.output_dir, "retrieved_ids_sentiment_sentence_classification_{}_{}.pt".format(data_type, counter_while_loop)))
         idx_for_ttl_similar_cases_for_bundle, prob_for_ttl_similar_cases_for_bundle, ttl_similar_cases_with_bundle_order, ttl_cur_tuple_with_bundle_order = self.rerank(idx_for_ttl_similar_cases_for_bundle, prob_for_ttl_similar_cases_for_bundle, ttl_similar_cases_with_bundle_order, ttl_cur_tuple_with_bundle_order, obj_line_id_bundleOrder, data_type)
         if counter_while_loop == 0:
@@ -1226,7 +1228,7 @@ class embedding_builder:
                 for id_emb in range(len(batch_line_id)):
                     ttl_similar_cases.append('\n')
                 print("INFO: obj_rel not found in sample_ckb_dict, obj_rel: ", obj_rel.item(), 'sample_ckb_dict.keys(): ', sample_ckb_dict.keys())
-                if self.args.dataset_selection == 1 or self.args.dataset_selection == 2 or self.args.dataset_selection == 3 or self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
+                if self.args.dataset_selection == 1 or self.args.dataset_selection == 2 or self.args.dataset_selection == 3 or self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6 or self.args.dataset_selection == 7:
                     # suppose we can always find cases with same relation in memory store
                     raise Exception("obj_rel not found in sample_ckb_dict")
                 elif self.args.dataset_selection == 0:
@@ -1349,7 +1351,7 @@ class embedding_builder:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
                 elif self.args.dataset_selection == 3:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
-                elif self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
+                elif self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6 or self.args.dataset_selection == 7:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
 
                 # count for analysis
@@ -1523,7 +1525,7 @@ class embedding_builder:
                 for id_emb in range(len(batch_line_id)):
                     ttl_similar_cases.append('\n')
                 print("INFO: obj_rel not found in sample_ckb_dict, obj_rel: ", obj_rel.item(), 'sample_ckb_dict.keys(): ', sample_ckb_dict.keys())
-                if self.args.dataset_selection == 1 or self.args.dataset_selection == 2 or self.args.dataset_selection == 3 or self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
+                if self.args.dataset_selection == 1 or self.args.dataset_selection == 2 or self.args.dataset_selection == 3 or self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6 or self.args.dataset_selection == 7:
                     # suppose we can always find cases with same relation in memory store
                     raise Exception("obj_rel not found in sample_ckb_dict")
                 elif self.args.dataset_selection == 0:
@@ -1641,7 +1643,7 @@ class embedding_builder:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
                 elif self.args.dataset_selection == 3:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
-                elif self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6:
+                elif self.args.dataset_selection == 4 or self.args.dataset_selection == 5 or self.args.dataset_selection == 6 or self.args.dataset_selection == 7:
                     similar_cases, cur_triple = self.get_current_similar_case_shakespear_or_e2e(batch_line_id[id_emb], clean_selected_idxs[id_emb], data_type=data_type)
 
                 # count for analysis
@@ -2199,7 +2201,7 @@ def main():
     parser.add_argument("--train_batch_size", type=int, default=32)
     parser.add_argument("--eval_batch_size", type=int, default=32)
     # dataset_selection: 0: conceptnet 1: atomic 2: Shakespeare text style transfer
-    # 3: e2e (table2text) 4: sentiment sentence classification dataset; 5: financial_phasebank
+    # 3: e2e (table2text) 4: sentiment sentence classification dataset; 5: financial_phasebank; 6: yelp; 7: twitter
     parser.add_argument("--dataset_selection", type=int, default=0)
     # parser.add_argument("--model_type", type=str, default="dpr")
     parser.add_argument("--generator_model_type", type=str, default="gpt2-lmhead",
@@ -2315,6 +2317,15 @@ def main():
         args.max_r = 2
         args.max_e2 = 5
         args.max_additional_cases = 700
+        assert args.subset_selection >= -1 and args.subset_selection <= 3
+    elif args.dataset_selection == 7:
+        args.train_dataset = ["./Data/twitter/splitted/train_lines.txt"]
+        args.eval_dataset = ["./Data/twitter/splitted/eval_lines.txt"]
+        args.test_dataset = ["./Data/twitter/splitted/test_lines.txt"]
+        args.max_e1 = 110
+        args.max_r = 2
+        args.max_e2 = 5
+        args.max_additional_cases = 480
         assert args.subset_selection >= -1 and args.subset_selection <= 3
     else:
         raise Exception("Not supported dataset_selection")
